@@ -13,7 +13,6 @@ protected:
     
 public:
     Actor(std::string path);
-    Actor(Sprite* sprite);
     virtual ~Actor();
 
     virtual void Tick(float deltaTime);
@@ -22,7 +21,8 @@ public:
 
     void SetLocation(Vector2 location);
 
-    Vector2 GetWorldLocation() const { return location; }
-    Vector2 GetLocation() const;
+    // Relive to center of the window
+    Vector2 GetScreenLocation() const { return location; }
+    Vector2 GetWorldLocation() const;
     Sprite* GetSprite() const { return sprite; }
 };

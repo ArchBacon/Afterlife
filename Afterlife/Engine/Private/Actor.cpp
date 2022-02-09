@@ -23,7 +23,7 @@ void Actor::OnEvent(SDL_Event& event)
 
 void Actor::Render()
 {
-    sprite->Render(GetLocation());
+    sprite->Render(GetScreenLocation());
 }
 
 void Actor::SetLocation(Vector2 inLocation)
@@ -31,15 +31,9 @@ void Actor::SetLocation(Vector2 inLocation)
     location = inLocation;
 }
 
-Vector2 Actor::GetLocation() const
+Vector2 Actor::GetWorldLocation() const
 {
-    if (Application::Get()->GetLevel() == nullptr)
-    {
-    #ifdef AE_DEBUG
-            printf("Level is not set");
-    #endif
-    }
-    const SDL_Rect camera = Application::Get()->GetLevel()->GetCamera();
+    const Camera* camera = Application::Get()->GetLevel()->GetCamera();
 
-    return location - Vector2(camera.x, camera.y);
+    return Vector2(location.x - camera->GetWidth(), location.y - camera->GetHeight());
 }

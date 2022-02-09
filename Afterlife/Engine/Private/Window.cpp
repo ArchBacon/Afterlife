@@ -10,7 +10,8 @@ Window::Window(WindowProperties properties)
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     IMG_Init(IMG_INIT_PNG);
 
-    SDL_CreateWindowAndRenderer(properties.width, properties.height, SDL_WINDOW_SHOWN, &window, &renderer);
+    window = SDL_CreateWindow(properties.title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, properties.width, properties.height, SDL_WINDOW_SHOWN);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
 
 Window::~Window()

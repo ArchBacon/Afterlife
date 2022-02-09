@@ -1,32 +1,32 @@
 #include "FrozenRiver.h"
-
 #include "Application.h"
+#include "Player.h"
 
 FrozenRiver::FrozenRiver()
 {
     // Create objects
     background = new Sprite("Assets/Memories/background.png");
-    boat = new Actor("Assets/Memories/boat.png");
-    boat->SetLocation(Vector2(200, 200));
-    
-    camera = {
-        0,
-        0,
-        (boat->GetWorldLocation().x + boat->GetSprite()->GetWidth() / 2) - Application::Get()->GetWindow()->GetWidth() / 2,
-        (boat->GetWorldLocation().y + boat->GetSprite()->GetHeight() / 2) - Application::Get()->GetWindow()->GetHeight() / 2,
-    };
+    player = new Player("Assets/Memories/player_cube.png");
+    player->SetLocation(Vector2(640, 550));
 }
 
 FrozenRiver::~FrozenRiver()
 {
     // Delete objects
     delete background;
-    delete boat;
 }
 
 void FrozenRiver::Render()
 {
     // Render objects
-    background->Render(Vector2(0, 0));
-    boat->Render();
+    SDL_Rect cameraRect = camera->ToRect();
+    
+    background->Render(Vector2(0, 0), &cameraRect);
+    player->Render();
+}
+
+void FrozenRiver::Tick(float deltaTime)
+{
+    Level::Tick(deltaTime);
+    camera->Update(player);
 }
