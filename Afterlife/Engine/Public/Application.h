@@ -22,7 +22,7 @@ public:
     void LoadLevel(Level* level);
     Level* GetLevel() const { return level; }
 
-    void OnEvent(const SDL_Event& event);
+    void OnEvent(SDL_Event& event);
     void Tick(float deltaTime) const;
     void Render() const;
 

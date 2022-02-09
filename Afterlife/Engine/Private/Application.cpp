@@ -23,7 +23,7 @@ void Application::LoadLevel(Level* inLevel)
     level = inLevel;
 }
 
-void Application::OnEvent(const SDL_Event& event)
+void Application::OnEvent(SDL_Event& event)
 {
     if (event.type == SDL_QUIT)
     {
@@ -40,7 +40,9 @@ void Application::Tick(float deltaTime) const
 
 void Application::Render() const
 {
+    window->Clear();
     level->Render();
+    window->Update();
 }
 
 Application* Application::Get()

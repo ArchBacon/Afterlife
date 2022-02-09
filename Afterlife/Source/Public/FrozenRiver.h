@@ -1,14 +1,15 @@
 #pragma once
 
 #include "Level.h"
+#include "Sprite.h"
 
-class FrozenRiver final : public Level
+class FrozenRiver : public Level
 {
+    Sprite* background;
+    
 public:
     FrozenRiver();
     ~FrozenRiver() override;
     
     void Render() override;
-    void OnEvent(const SDL_Event& event) override;
-    void Tick(float deltaTime) override;
 };

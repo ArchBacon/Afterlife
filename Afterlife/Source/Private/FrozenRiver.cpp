@@ -3,24 +3,17 @@
 FrozenRiver::FrozenRiver()
 {
     // Create objects;
+    background = new Sprite("Assets/background.png");
 }
 
 FrozenRiver::~FrozenRiver()
 {
     // Delete objects
+    delete background;
 }
 
 void FrozenRiver::Render()
 {
     // Render objects
-}
-
-void FrozenRiver::OnEvent(const SDL_Event& event)
-{
-    Level::OnEvent(event);
-}
-
-void FrozenRiver::Tick(float deltaTime)
-{
-    Level::Tick(deltaTime);
+    background->Render();
 }
