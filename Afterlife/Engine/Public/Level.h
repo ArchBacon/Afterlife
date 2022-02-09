@@ -8,7 +8,7 @@
 class Level
 {
 protected:
-    Vector2 size;
+    Vector2 size = Vector2(100, 100);
     Camera* camera = nullptr;
     
 public:

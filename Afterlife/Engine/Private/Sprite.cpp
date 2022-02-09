@@ -7,11 +7,16 @@
 
 Sprite::Sprite(std::string path)
 {
-    SDL_Surface* surface = IMG_Load(path.c_str());
-    size = Vector2(surface->w, surface->h);
-    sprite = SDL_CreateTextureFromSurface(Application::Get()->GetRenderer(), surface);
+    SDL_Surface* image = IMG_Load(path.c_str());
+    if (image == nullptr)
+    {
+        printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+    }
+    
+    size = Vector2(image->w, image->h);
+    sprite = SDL_CreateTextureFromSurface(Application::Get()->GetRenderer(), image);
 
-    SDL_FreeSurface(surface);
+    SDL_FreeSurface(image);
 }
 
 Sprite::~Sprite()
