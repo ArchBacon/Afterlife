@@ -2,7 +2,7 @@
 
 FrozenRiver::FrozenRiver()
 {
-    // Create objects;
+    // Create objects
     background = new Sprite("Assets/background.png");
 }
 
@@ -15,5 +15,5 @@ FrozenRiver::~FrozenRiver()
 void FrozenRiver::Render()
 {
     // Render objects
-    background->Render();
+    background->Render(Vector2(0, 0));
 }

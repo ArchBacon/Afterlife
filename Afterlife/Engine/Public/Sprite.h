@@ -14,7 +14,7 @@ public:
     Sprite(std::string path);
     ~Sprite();
 
-    void Render(Vector2 location = Vector2());
+    void Render(Vector2 location) const;
     
     int GetWidth() const { return size.x; }
     int GetHeight() const { return size.y; }
