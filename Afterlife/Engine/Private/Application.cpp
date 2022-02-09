@@ -5,6 +5,7 @@ Application* Application::instance = nullptr;
 Application::Application()
 {
     window = new Window();
+    level = nullptr;
     
     running = true;
 }
@@ -13,6 +14,13 @@ Application::~Application()
 {
     delete instance;
     delete window;
+    delete level;
+}
+
+void Application::LoadLevel(Level* inLevel)
+{
+    delete level;
+    level = inLevel;
 }
 
 void Application::OnEvent(const SDL_Event& event)
@@ -21,6 +29,18 @@ void Application::OnEvent(const SDL_Event& event)
     {
         running = false;
     }
+
+    level->OnEvent(event);
+}
+
+void Application::Tick(float deltaTime) const
+{
+    level->Tick(deltaTime);
+}
+
+void Application::Render() const
+{
+    level->Render();
 }
 
 Application* Application::Get()
