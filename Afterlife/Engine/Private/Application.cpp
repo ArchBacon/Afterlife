@@ -12,6 +12,15 @@ Application::Application()
 Application::~Application()
 {
     delete instance;
+    delete window;
+}
+
+void Application::OnEvent(const SDL_Event& event)
+{
+    if (event.type == SDL_QUIT)
+    {
+        running = false;
+    }
 }
 
 Application* Application::Get()

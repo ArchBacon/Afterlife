@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SDL_events.h>
+
 #include "Window.h"
 
 class Application
@@ -14,6 +16,8 @@ class Application
 public:
     static Application* Get();
     ~Application();
+
+    void OnEvent(const SDL_Event& event);
 
     bool IsRunning() const { return running; };
     Window* GetWindow() const { return window; };
