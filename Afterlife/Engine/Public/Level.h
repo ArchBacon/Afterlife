@@ -2,14 +2,13 @@
 
 #include <SDL_events.h>
 
-#include "Camera.h"
 #include "Utils.h"
 
 class Level
 {
 protected:
     Vector2 size = Vector2(100, 100);
-    Camera* camera = nullptr;
+    SDL_Rect camera = {};
     
 public:
     virtual ~Level() = default;
@@ -20,5 +19,5 @@ public:
 
     int GetWidth() const { return size.x; }
     int GetHeight() const { return size.y; }
-    Camera* GetCamera() const { return camera; }
+    SDL_Rect GetCamera() const { return camera; }
 };

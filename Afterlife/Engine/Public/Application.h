@@ -11,6 +11,7 @@ class Application
 
     Window* window;
     Level* level;
+    
     bool running = false;
 
     Application();

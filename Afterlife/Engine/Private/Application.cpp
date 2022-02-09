@@ -1,5 +1,7 @@
 #include "Application.h"
 
+#include "FrozenRiver.h"
+
 Application* Application::instance = nullptr;
 
 Application::Application()

@@ -3,14 +3,15 @@
 #include <SDL_image.h>
 
 #include "Application.h"
-#include "Camera.h"
 
 Sprite::Sprite(std::string path)
 {
     SDL_Surface* image = IMG_Load(path.c_str());
     if (image == nullptr)
     {
+    #ifdef AE_DEBUG
         printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+    #endif
     }
     
     size = Vector2(image->w, image->h);
@@ -24,19 +25,15 @@ Sprite::~Sprite()
     SDL_DestroyTexture(sprite);
 }
 
-void Sprite::Render(Vector2 location) const
+void Sprite::Render(Vector2 location, SDL_Rect* clip) const
 {
-    Camera* camera = Application::Get()->GetLevel()->GetCamera();
     SDL_Rect renderQuad = {location.x, location.y, size.x, size.y};
-    SDL_Rect cameraRect = renderQuad;
 
-    if (camera != nullptr)
+    if (clip != nullptr)
     {
-        renderQuad.w = camera->GetWidth();
-        renderQuad.h = camera->GetHeight();
-
-        cameraRect = camera->ToRect();
+        renderQuad.w = clip->w;
+        renderQuad.h = clip->h;
     }
 
-    SDL_RenderCopyEx(Application::Get()->GetWindow()->GetRenderer(), sprite, &cameraRect, &renderQuad, 0.f, nullptr, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(Application::Get()->GetWindow()->GetRenderer(), sprite, clip, &renderQuad, 0.f, nullptr, SDL_FLIP_NONE);
 }
