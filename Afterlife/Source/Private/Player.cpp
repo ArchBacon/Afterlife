@@ -15,6 +15,7 @@ void Player::Tick(float deltaTime)
 {
     Actor::Tick(deltaTime);
 
+    // Move player when keys are pressed
     const float deltaSpeed = speed * deltaTime;
     const Uint8* keyStates = SDL_GetKeyboardState(nullptr);
 
