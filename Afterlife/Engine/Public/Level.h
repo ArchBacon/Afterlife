@@ -18,8 +18,8 @@ public:
         delete camera;
     }
     
-    virtual void OnEvent(SDL_Event& event) {}
-    virtual void Tick(float deltaTime) {}
+    virtual void OnEvent(SDL_Event& event) = 0;
+    virtual void Tick(float deltaTime) = 0;
     virtual void Render() = 0;
 
     int GetWidth() const { return size.x; }
