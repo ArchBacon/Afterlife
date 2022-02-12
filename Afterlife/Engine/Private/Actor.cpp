@@ -30,7 +30,6 @@ void Actor::Render(Camera* camera)
         return;
     }
 
-    printf("render with camera");
     sprite->Render(location - camera->GetLocation());
 }
 
