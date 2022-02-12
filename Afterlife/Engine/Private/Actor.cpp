@@ -1,6 +1,7 @@
 #include "Actor.h"
 
 #include "Application.h"
+#include "Sprite.h"
 
 Actor::Actor(std::string path)
     : location(Vector2(0, 0))
@@ -21,19 +22,19 @@ void Actor::OnEvent(SDL_Event& event)
 {
 }
 
-void Actor::Render()
+void Actor::Render(Camera* camera)
 {
-    sprite->Render(GetScreenLocation());
+    if (camera == nullptr)
+    {
+        sprite->Render(location);
+        return;
+    }
+
+    printf("render with camera");
+    sprite->Render(location - camera->GetLocation());
 }
 
 void Actor::SetLocation(Vector2 inLocation)
 {
     location = inLocation;
-}
-
-Vector2 Actor::GetWorldLocation() const
-{
-    const Camera* camera = Application::Get()->GetLevel()->GetCamera();
-
-    return Vector2(location.x - camera->GetWidth(), location.y - camera->GetHeight());
 }

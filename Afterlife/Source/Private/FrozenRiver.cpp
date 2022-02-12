@@ -22,11 +22,20 @@ void FrozenRiver::Render()
     SDL_Rect cameraRect = camera->ToRect();
     
     background->Render(Vector2(0, 0), &cameraRect);
-    player->Render();
+    player->Render(camera);
 }
 
 void FrozenRiver::Tick(float deltaTime)
 {
     Level::Tick(deltaTime);
+    
+    player->Tick(deltaTime);
     camera->Update(player);
+}
+
+void FrozenRiver::OnEvent(SDL_Event& event)
+{
+    Level::OnEvent(event);
+
+    player->OnEvent(event);
 }

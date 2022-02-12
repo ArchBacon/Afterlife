@@ -2,8 +2,9 @@
 
 #include <SDL_rect.h>
 
-#include "Actor.h"
 #include "Utils.h"
+
+class Actor;
 
 class Camera
 {
@@ -14,7 +15,7 @@ public:
     Camera();
     ~Camera() = default;
 
-    void Update(Actor* player);
+    void Update(Actor* actorToFollow = nullptr);
     SDL_Rect ToRect() const;
 
     int GetWidth() const { return size.x; }

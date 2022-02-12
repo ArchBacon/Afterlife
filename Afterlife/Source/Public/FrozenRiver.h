@@ -15,4 +15,5 @@ public:
     
     void Render() override;
     void Tick(float deltaTime) override;
+    void OnEvent(SDL_Event& event) override;
 };

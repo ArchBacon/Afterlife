@@ -1,22 +1,20 @@
 #include "Camera.h"
 #include "Application.h"
+#include "Sprite.h"
 
 Camera::Camera()
 {
-    location = Vector2(0, 0);
+    location = Vector2(640, 0);
     size = Vector2(Application::Get()->GetWindow()->GetWidth(), Application::Get()->GetWindow()->GetHeight());
 }
 
-void Camera::Update(Actor* player)
+void Camera::Update(Actor* actorToFollow)
 {
     // Follow actor
-    if (player == nullptr)
+    if (actorToFollow != nullptr)
     {
-        printf("Player is not set");
-        return;    
+        location.x = (actorToFollow->GetLocation().x + actorToFollow->GetSprite()->GetWidth() / 2) - Application::Get()->GetWindow()->GetWidth() / 2;
     }
-    
-    location.x = (player->GetScreenLocation().x) - Application::Get()->GetWindow()->GetWidth() / 2;
 }
 
 SDL_Rect Camera::ToRect() const
