@@ -19,14 +19,14 @@ void Player::Tick(float deltaTime)
     const float deltaSpeed = speed * deltaTime;
     const Uint8* keyStates = SDL_GetKeyboardState(nullptr);
 
-    if (keyStates[SDL_SCANCODE_A])
+    if (keyStates[SDL_SCANCODE_A] == 1)
     {
         if (location.x - deltaSpeed > 0 + 640)
         {
             location.x -= static_cast<int>(deltaSpeed);
         }
     }
-    if (keyStates[SDL_SCANCODE_D])
+    if (keyStates[SDL_SCANCODE_D] == 1)
     {
         if (location.x + deltaSpeed < 3200 - 640 - sprite->GetWidth())
         {

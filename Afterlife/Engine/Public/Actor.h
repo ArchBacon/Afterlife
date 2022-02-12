@@ -2,7 +2,9 @@
 
 #include <SDL_events.h>
 #include <string>
+#include <vector>
 
+#include "CollisionBox.h"
 #include "Utils.h"
 
 class Camera;
@@ -13,7 +15,8 @@ class Actor
 protected:
     Vector2 location;
     Sprite* sprite;
-    // CollisionBox
+    SDL_Rect collider;
+    std::vector<Actor*> actors;
     
 public:
     Actor(std::string path);
@@ -21,11 +24,16 @@ public:
 
     virtual void Tick(float deltaTime);
     virtual void OnEvent(SDL_Event& event);
-    virtual void Render(Camera* camera = nullptr);
+    virtual void Render(Camera* camera);
 
+    void AddActorForOverlap(Actor* actor);
+    
     void SetLocation(Vector2 location);
 
     // Relive to center of the window
     Vector2 GetLocation() const { return location; }
     Sprite* GetSprite() const { return sprite; }
+    SDL_Rect GetCollider() const { return collider; }
+
+    bool IsOverlapping(const Actor* actor) const;
 };

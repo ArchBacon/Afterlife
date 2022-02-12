@@ -4,10 +4,10 @@
 
 #include "Application.h"
 
-CollisionBox::CollisionBox(Vector2 size, Vector2 location)
-    : size(), location()
+CollisionBox::CollisionBox(Vector2 size)
+    : size(size)
 {
-    collider = {location.x, location.y, size.x, size.y};
+    collider = {0, 0, size.x, size.y};
 }
 
 void CollisionBox::Render(Camera* camera)
@@ -19,8 +19,8 @@ void CollisionBox::Render(Camera* camera)
     }
 
     const SDL_Rect collisionRect = collider;
-    collider.x = location.x - camera->GetLocation().x;
-    collider.y = location.y - camera->GetLocation().y;
+    collider.x -= camera->GetLocation().x;
+    collider.y -= camera->GetLocation().y;
 
     SDL_RenderDrawRect(Application::Get()->GetRenderer(), &collisionRect);
 }

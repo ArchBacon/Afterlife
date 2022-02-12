@@ -6,15 +6,13 @@
 
 class CollisionBox
 {
-    Vector2 size;
-    Vector2 location;
-
     SDL_Rect collider;
+    Vector2 size;
     
 public:
-    CollisionBox(Vector2 size, Vector2 location);
+    CollisionBox(Vector2 size);
 
-    void Render(Camera* camera);
+    void Render(Camera* camera = nullptr);
     bool IsOverlapping(const CollisionBox* other) const;
     SDL_Rect ToRect() const;
 };

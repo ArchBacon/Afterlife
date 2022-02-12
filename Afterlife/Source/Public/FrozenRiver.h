@@ -8,6 +8,8 @@ class FrozenRiver : public Level
 {
     Sprite* background;
     Player* player;
+
+    Actor* box;
     
 public:
     FrozenRiver();

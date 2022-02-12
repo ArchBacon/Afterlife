@@ -3,7 +3,6 @@
 #include <SDL_image.h>
 
 #include "Application.h"
-#include "Camera.h"
 
 Sprite::Sprite(std::string path)
 {
