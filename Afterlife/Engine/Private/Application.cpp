@@ -1,6 +1,6 @@
 #include "Application.h"
 
-#include "FrozenRiver.h"
+#include "Levels/FrozenRiver.h"
 
 Application* Application::instance = nullptr;
 
@@ -14,14 +14,15 @@ Application::Application()
 
 Application::~Application()
 {
-    delete instance;
-    delete window;
     delete level;
+    delete window;
+    delete instance;
 }
 
 void Application::LoadLevel(Level* inLevel)
 {
-    delete level;
+    // TODO: fix memory leak, but program crashes
+    // delete level;
     level = inLevel;
 }
 

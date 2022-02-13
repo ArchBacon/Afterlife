@@ -15,7 +15,8 @@ protected:
     Vector2 location;
     Sprite* sprite;
     SDL_Rect collider;
-    Array<Actor*> actors;
+    
+    bool updateCollider = true;
     
 public:
     Actor(std::string path);
@@ -24,8 +25,6 @@ public:
     virtual void Tick(float deltaTime);
     virtual void OnEvent(SDL_Event& event);
     virtual void Render(Camera* camera);
-
-    void AddActorForOverlap(Actor* actor);
     
     void SetLocation(Vector2 location);
 
@@ -33,6 +32,4 @@ public:
     Vector2 GetLocation() const { return location; }
     Sprite* GetSprite() const { return sprite; }
     SDL_Rect GetCollider() const { return collider; }
-
-    bool IsOverlapping(const Actor* actor) const;
 };

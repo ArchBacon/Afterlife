@@ -1,7 +1,7 @@
 #include <SDL_events.h>
 
 #include "Application.h"
-#include "FrozenRiver.h"
+#include "Levels/FrozenRiver.h"
 #include "Timer.h"
 
 constexpr int SCREEN_FPS = 60;
@@ -15,9 +15,8 @@ Timer capTimer;
 
 int main(int argc, char** argv)
 {
-    capTimer.Start();
-
     app->LoadLevel(new FrozenRiver());
+    capTimer.Start();
 
     while (app->IsRunning())
     {

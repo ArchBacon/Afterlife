@@ -1,23 +1,27 @@
-#include "FrozenRiver.h"
+#include "Levels/FrozenRiver.h"
+
 #include "Application.h"
 #include "Player.h"
+#include "LevelLoaders/CatMemoryLevelLoader.h"
 
 FrozenRiver::FrozenRiver()
 {
     // Create objects
+   camera = new Camera();
     background = new Sprite("Assets/Memories/background.png");
     player = new Player("Assets/Memories/player_cube.png");
     player->SetLocation(Vector2(640, 550));
 
-    box = new Actor("Assets/Keys/Key_A.png");
-    box->SetLocation(Vector2(1000, 550));
+    box = new CatMemoryLevelLoader(Vector2(125, 125));
+    box->SetLocation(Vector2(1000, Application::Get()->GetWindow()->GetHeight() - 180));
 
-    player->AddActorForOverlap(box);
+    player->AddInteractable(box);
 }
 
 FrozenRiver::~FrozenRiver()
 {
     // Delete objects
+    delete camera;
     delete background;
 }
 

@@ -5,6 +5,7 @@
 Player::Player(const std::string& path)
     : Actor(path)
 {
+    interactTimer.Start();
 }
 
 Player::~Player()
@@ -33,14 +34,49 @@ void Player::Tick(float deltaTime)
             location.x += static_cast<int>(deltaSpeed);
         }
     }
+    
+    for (const Interactable* interactable : actors.iterator)
+    {
+        if (IsOverlapping(interactable) && keyStates[SDL_SCANCODE_SPACE] == 1)
+        {
+            if (interactTimer.GetTicks() < 400 || !canInteract)
+            {
+                return;
+            }
+
+            interactable->Interact();
+            canInteract = false;
+            interactTimer.Start();
+        }
+    }
 }
 
 void Player::OnEvent(SDL_Event& event)
 {
     Actor::OnEvent(event);
+
+    if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
+    {
+        canInteract = true;
+    }
 }
 
 void Player::Render(Camera* camera)
 {
     Actor::Render(camera);
+}
+
+void Player::AddInteractable(Interactable* interactable)
+{
+    actors.AddUnique(interactable);
+}
+
+bool Player::IsOverlapping(const Interactable* interactable) const
+{
+    const SDL_Rect other = interactable->GetCollider();
+
+    return !(other.y + other.h <= collider.y
+        || other.y >= collider.y + collider.h
+        || other.x + other.w <= collider.x
+        || other.x >= collider.x + collider.w);
 }
