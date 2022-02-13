@@ -20,7 +20,7 @@ class Array
 
 public:
     /**
-     * Syntactic sugar
+     * Syntactic sugar (alias for [data])
      */
     const std::vector<T>& iterator = data;
     
