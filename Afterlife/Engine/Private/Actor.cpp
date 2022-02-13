@@ -16,7 +16,7 @@ Actor::~Actor()
 
 void Actor::Tick(float deltaTime)
 {
-    for (const Actor* actor : actors)
+    for (const Actor* actor : actors.iterator)
     {
         if (IsOverlapping(actor))
         {
@@ -45,7 +45,7 @@ void Actor::Render(Camera* camera)
 
 void Actor::AddActorForOverlap(Actor* actor)
 {
-    actors.push_back(actor);
+    actors.AddUnique(actor);
 }
 
 void Actor::SetLocation(Vector2 inLocation)
@@ -55,10 +55,10 @@ void Actor::SetLocation(Vector2 inLocation)
 
 bool Actor::IsOverlapping(const Actor* actor) const
 {
-    const SDL_Rect otherCollider = actor->GetCollider();
+    const SDL_Rect other = actor->GetCollider();
 
-    return otherCollider.y + otherCollider.h > collider.y
-        || otherCollider.y < collider.y + collider.h
-        || otherCollider.x + otherCollider.w > collider.x
-        || otherCollider.x < collider.x + collider.w;
+    return !(other.y + other.h <= collider.y
+        || other.y >= collider.y + collider.h
+        || other.x + other.w <= collider.x
+        || other.x >= collider.x + collider.w);
 }

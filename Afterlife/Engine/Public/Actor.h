@@ -2,7 +2,6 @@
 
 #include <SDL_events.h>
 #include <string>
-#include <vector>
 
 #include "CollisionBox.h"
 #include "Utils.h"
@@ -16,7 +15,7 @@ protected:
     Vector2 location;
     Sprite* sprite;
     SDL_Rect collider;
-    std::vector<Actor*> actors;
+    Array<Actor*> actors;
     
 public:
     Actor(std::string path);
