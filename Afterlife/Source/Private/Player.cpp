@@ -3,13 +3,16 @@
 #include "Sprite.h"
 
 Player::Player(const std::string& path)
-    : Actor(path)
+    : Actor(path), renderLocation()
 {
     interactTimer.Start();
+    interactKey = new Sprite("Assets/Keys/Key_Space.png");
+    renderLocation = Vector2(0, 0);
 }
 
 Player::~Player()
 {
+    delete interactKey;
 }
 
 void Player::Tick(float deltaTime)
@@ -34,20 +37,32 @@ void Player::Tick(float deltaTime)
             location.x += static_cast<int>(deltaSpeed);
         }
     }
-    
+
     for (const Interactable* interactable : actors.iterator)
     {
-        if (IsOverlapping(interactable) && keyStates[SDL_SCANCODE_SPACE] == 1)
+        if (IsOverlapping(interactable))
         {
-            if (interactTimer.GetTicks() < 400 || !canInteract)
-            {
-                return;
-            }
+            // Render interact key above interactable
+            renderInteractKey = true;
+            renderLocation = interactable->GetLocation();
+            renderLocation.x += interactable->GetWidth()/2;
 
-            interactable->Interact();
-            canInteract = false;
-            interactTimer.Start();
+            if (keyStates[SDL_SCANCODE_SPACE] == 1)
+            {
+                if (interactTimer.GetTicks() < 400 || !canInteract)
+                {
+                    return;
+                }
+
+                interactable->Interact();
+                canInteract = false;
+                interactTimer.Start();
+            }
+            
+            return;
         }
+
+        renderInteractKey = false;
     }
 }
 
@@ -64,6 +79,15 @@ void Player::OnEvent(SDL_Event& event)
 void Player::Render(Camera* camera)
 {
     Actor::Render(camera);
+
+    if (renderInteractKey)
+    {
+        renderLocation = renderLocation - camera->GetLocation();
+        renderLocation.x -= interactKey->GetWidth()/2;
+        renderLocation.y -= interactKey->GetHeight();
+        
+        interactKey->Render(renderLocation);
+    }
 }
 
 void Player::AddInteractable(Interactable* interactable)

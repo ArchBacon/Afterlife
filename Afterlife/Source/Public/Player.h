@@ -11,6 +11,10 @@ class Player : public Actor
     Timer interactTimer;
     bool canInteract = true;
     
+    Sprite* interactKey;
+    bool renderInteractKey = false;
+    Vector2 renderLocation;
+    
 public:
     Player(const std::string& path);
     ~Player() override;

@@ -2,14 +2,14 @@
 
 #include "Level.h"
 
-class CatMemoryLevel : public Level
+class CoworkersMemoryLevel : public Level
 {
     Camera* camera;
     Actor* background;
     
 public:
-    CatMemoryLevel();
-    ~CatMemoryLevel() override;
+    CoworkersMemoryLevel();
+    ~CoworkersMemoryLevel() override;
     
     void OnEvent(SDL_Event& event) override;
     void Tick(float deltaTime) override;

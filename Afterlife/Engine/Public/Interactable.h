@@ -11,4 +11,6 @@ public:
 
     void Render(Camera* camera) override;
     virtual void Interact() const;
+    int GetWidth() const { return size.x; }
+    int GetHeight() const { return size.y; }
 };

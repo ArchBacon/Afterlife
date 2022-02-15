@@ -3,15 +3,22 @@
 #include "Interactable.h"
 #include "Level.h"
 #include "Player.h"
-#include "Sprite.h"
 
 class FrozenRiver : public Level
 {
     Camera* camera;
-    Sprite* background;
     Player* player;
+    Interactable* levelLoaderCoworker;
+    Interactable* levelLoaderFriends;
+    Interactable* levelLoaderMother;
+    Interactable* levelLoaderCat;
 
-    Interactable* box;
+    Sprite* background;
+    Sprite* coworkers;
+    Sprite* friends;
+    Sprite* mother;
+    Sprite* cat;
+    Sprite* portal;
     
 public:
     FrozenRiver();

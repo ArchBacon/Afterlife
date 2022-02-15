@@ -37,7 +37,9 @@ void Actor::Render(Camera* camera)
 
     sprite->Render(location - camera->GetLocation());
 
+#ifdef AE_DEBUG
     SDL_RenderDrawRect(Application::Get()->GetRenderer(), &collider);
+#endif
 }
 
 void Actor::SetLocation(Vector2 inLocation)
