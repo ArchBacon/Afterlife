@@ -9,7 +9,7 @@ project "Afterlife"
     location "Afterlife"
     kind "ConsoleApp"
     language "C++"
-    staticruntime "Off"
+    staticruntime "On"
     
     targetdir ("Binaries/" .. outputdir .. "/%{prj.name}")
     objdir ("Intermediate/" .. outputdir .. "/%{prj.name}")
