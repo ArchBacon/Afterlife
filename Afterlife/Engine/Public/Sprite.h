@@ -14,7 +14,7 @@ public:
     Sprite(std::string path);
     ~Sprite();
 
-    void Render(Vector2 location, SDL_Rect* clip = nullptr) const;
+    void Render(Vector2 location, SDL_Rect* clip = nullptr, SDL_RendererFlip flip = SDL_FLIP_NONE) const;
     
     int GetWidth() const { return size.x; }
     int GetHeight() const { return size.y; }

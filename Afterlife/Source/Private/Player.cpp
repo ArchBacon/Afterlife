@@ -25,6 +25,8 @@ void Player::Tick(float deltaTime)
 
     if (keyStates[SDL_SCANCODE_A] == 1)
     {
+        flip = SDL_FLIP_HORIZONTAL;
+        
         if (location.x - deltaSpeed > 0 + 640)
         {
             location.x -= static_cast<int>(deltaSpeed);
@@ -32,6 +34,8 @@ void Player::Tick(float deltaTime)
     }
     if (keyStates[SDL_SCANCODE_D] == 1)
     {
+        flip = SDL_FLIP_NONE;
+        
         if (location.x + deltaSpeed < 3200 - 640 - sprite->GetWidth())
         {
             location.x += static_cast<int>(deltaSpeed);

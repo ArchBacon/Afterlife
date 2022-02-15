@@ -4,7 +4,7 @@
 #include "Sprite.h"
 
 Actor::Actor(std::string path)
-    : location(Vector2(0, 0)), collider()
+    : location(Vector2(0, 0)), collider(), flip(SDL_FLIP_NONE)
 {
     sprite = new Sprite(path);
 }
@@ -35,7 +35,7 @@ void Actor::Render(Camera* camera)
         };
     }
 
-    sprite->Render(location - camera->GetLocation());
+    sprite->Render(location - camera->GetLocation(), nullptr, flip);
 
 #ifdef AE_DEBUG
     SDL_RenderDrawRect(Application::Get()->GetRenderer(), &collider);

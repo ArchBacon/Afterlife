@@ -25,7 +25,7 @@ Sprite::~Sprite()
     SDL_DestroyTexture(sprite);
 }
 
-void Sprite::Render(Vector2 location, SDL_Rect* clip) const
+void Sprite::Render(Vector2 location, SDL_Rect* clip, SDL_RendererFlip flip) const
 {
     SDL_Rect renderQuad = {location.x, location.y, size.x, size.y};
 
@@ -35,5 +35,5 @@ void Sprite::Render(Vector2 location, SDL_Rect* clip) const
         renderQuad.h = clip->h;
     }
 
-    SDL_RenderCopyEx(Application::Get()->GetWindow()->GetRenderer(), sprite, clip, &renderQuad, 0.f, nullptr, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(Application::Get()->GetWindow()->GetRenderer(), sprite, clip, &renderQuad, 0.f, nullptr, flip);
 }

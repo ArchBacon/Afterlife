@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL_events.h>
+#include <SDL_render.h>
 #include <string>
 
 #include "CollisionBox.h"
@@ -15,7 +16,8 @@ protected:
     Vector2 location;
     Sprite* sprite;
     SDL_Rect collider;
-    
+
+    SDL_RendererFlip flip;
     bool updateCollider = true;
     
 public:
