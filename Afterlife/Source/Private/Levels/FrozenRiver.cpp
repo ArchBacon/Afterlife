@@ -35,11 +35,14 @@ FrozenRiver::FrozenRiver()
     mother = new Sprite("Assets/Memories/mother.png");
     cat = new Sprite("Assets/Memories/cat.png");
     portal = new Sprite("Assets/Memories/portal.png");
-    
+
+    // Config
     player->AddInteractable(levelLoaderCoworker);
     player->AddInteractable(levelLoaderFriends);
     player->AddInteractable(levelLoaderMother);
     player->AddInteractable(levelLoaderCat);
+
+    size = Vector2(3200, 720);
 }
 
 FrozenRiver::~FrozenRiver()

@@ -3,7 +3,8 @@
 MotherMemoryLevel::MotherMemoryLevel()
 {
     camera = new Camera();
-    background = new Actor("Assets/Memories/mother.png");
+    background = new Actor("Assets/House/background.png");
+    size = Vector2(2166, 720);
 }
 
 MotherMemoryLevel::~MotherMemoryLevel()

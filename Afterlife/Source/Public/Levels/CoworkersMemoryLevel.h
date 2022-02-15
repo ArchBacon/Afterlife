@@ -1,11 +1,13 @@
 #pragma once
 
 #include "Level.h"
+#include "Player.h"
 
 class CoworkersMemoryLevel : public Level
 {
     Camera* camera;
-    Actor* background;
+    Player* player;
+    Sprite* background;
     
 public:
     CoworkersMemoryLevel();

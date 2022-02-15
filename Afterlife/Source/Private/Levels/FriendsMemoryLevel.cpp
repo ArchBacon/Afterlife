@@ -3,7 +3,9 @@
 FriendsMemoryLevel::FriendsMemoryLevel()
 {
     camera = new Camera();
-    background = new Actor("Assets/Memories/friends.png");
+    background = new Actor("Assets/Cafe/background.png");
+
+    size = Vector2(1280, 720);
 }
 
 FriendsMemoryLevel::~FriendsMemoryLevel()
