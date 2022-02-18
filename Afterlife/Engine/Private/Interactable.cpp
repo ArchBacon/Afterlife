@@ -9,8 +9,8 @@ Interactable::Interactable(const Vector2 size)
 void Interactable::Render(Camera* camera)
 {
     collider = {
-        location.x - camera->GetLocation().x,
-        location.y - camera->GetLocation().y,
+        camera == nullptr ? location.x : location.x - camera->GetLocation().x,
+        camera == nullptr ? location.y : location.y - camera->GetLocation().y,
         size.x,
         size.y
     };

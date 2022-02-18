@@ -1,5 +1,6 @@
 #include "Player.h"
 
+#include "Application.h"
 #include "Sprite.h"
 
 Player::Player(const std::string& path)
@@ -18,6 +19,7 @@ Player::~Player()
 void Player::Tick(float deltaTime)
 {
     Actor::Tick(deltaTime);
+    const Level* level = Application::Get()->GetLevel();
 
     // Move player when keys are pressed
     const float deltaSpeed = speed * deltaTime;
@@ -27,7 +29,7 @@ void Player::Tick(float deltaTime)
     {
         flip = SDL_FLIP_HORIZONTAL;
         
-        if (location.x - deltaSpeed > 0 + 640)
+        if (location.x - deltaSpeed > 0 + level->GetBorderWidth())
         {
             location.x -= static_cast<int>(deltaSpeed);
         }
@@ -36,7 +38,7 @@ void Player::Tick(float deltaTime)
     {
         flip = SDL_FLIP_NONE;
         
-        if (location.x + deltaSpeed < 3200 - 640 - sprite->GetWidth())
+        if (location.x + deltaSpeed < level->GetWidth() - level->GetBorderWidth() - sprite->GetWidth())
         {
             location.x += static_cast<int>(deltaSpeed);
         }
@@ -86,7 +88,7 @@ void Player::Render(Camera* camera)
 
     if (renderInteractKey)
     {
-        renderLocation = renderLocation - camera->GetLocation();
+        renderLocation = camera == nullptr ? renderLocation : renderLocation - camera->GetLocation();
         renderLocation.x -= interactKey->GetWidth()/2;
         renderLocation.y -= interactKey->GetHeight();
         

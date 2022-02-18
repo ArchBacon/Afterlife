@@ -1,11 +1,20 @@
 #pragma once
 
 #include "Level.h"
+#include "Player.h"
 
 class FriendsMemoryLevel : public Level
 {
     Camera* camera;
-    Actor* background;
+    Player* player;
+    
+    Sprite* background;
+    Sprite* electricityPole;
+    Sprite* charon;
+    Sprite* friends;
+
+    Interactable* conversation;
+    Interactable* levelLoader;
     
 public:
     FriendsMemoryLevel();

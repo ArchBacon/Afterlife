@@ -1,9 +1,8 @@
 #include <SDL_events.h>
 
 #include "Application.h"
-#include "Levels/FrozenRiver.h"
 #include "Timer.h"
-#include "Levels/CoworkersMemoryLevel.h"
+#include "Levels/FriendsMemoryLevel.h"
 
 constexpr int SCREEN_FPS = 60;
 constexpr int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
@@ -16,7 +15,7 @@ Timer capTimer;
 
 int main(int argc, char** argv)
 {
-    app->LoadLevel(new FrozenRiver());
+    app->LoadLevel(new FriendsMemoryLevel());
     capTimer.Start();
 
     while (app->IsRunning())

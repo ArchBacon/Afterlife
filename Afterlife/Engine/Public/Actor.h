@@ -27,6 +27,7 @@ public:
     virtual void Tick(float deltaTime);
     virtual void OnEvent(SDL_Event& event);
     virtual void Render(Camera* camera);
+    void Flip();
     
     void SetLocation(Vector2 location);
 
