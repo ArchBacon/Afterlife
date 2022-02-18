@@ -20,5 +20,4 @@ void Interactable::Render(Camera* camera)
 
 void Interactable::Interact() const
 {
-    printf("Interacted on (%d, %d)\n", location.x, location.y);
 }

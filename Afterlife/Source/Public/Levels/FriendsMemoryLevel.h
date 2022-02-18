@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Conversation.h"
 #include "Level.h"
 #include "Player.h"
 
@@ -13,7 +14,7 @@ class FriendsMemoryLevel : public Level
     Sprite* charon;
     Sprite* friends;
 
-    Interactable* conversation;
+    Conversation* conversation;
     Interactable* levelLoader;
     
 public:

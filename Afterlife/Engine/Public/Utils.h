@@ -23,7 +23,7 @@ public:
      * Syntactic sugar (alias for [data])
      */
     const std::vector<T>& iterator = data;
-    
+
     /**
      * Adds a new item to the end of the array
      */

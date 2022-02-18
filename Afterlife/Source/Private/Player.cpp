@@ -1,6 +1,7 @@
 #include "Player.h"
 
 #include "Application.h"
+#include "Conversation.h"
 #include "Sprite.h"
 
 Player::Player(const std::string& path)
@@ -25,33 +26,33 @@ void Player::Tick(float deltaTime)
     const float deltaSpeed = speed * deltaTime;
     const Uint8* keyStates = SDL_GetKeyboardState(nullptr);
 
-    if (keyStates[SDL_SCANCODE_A] == 1)
+    if (keyStates[SDL_SCANCODE_A] == 1 && !listening)
     {
         flip = SDL_FLIP_HORIZONTAL;
-        
+
         if (location.x - deltaSpeed > 0 + level->GetBorderWidth())
         {
             location.x -= static_cast<int>(deltaSpeed);
         }
     }
-    if (keyStates[SDL_SCANCODE_D] == 1)
+    if (keyStates[SDL_SCANCODE_D] == 1 && !listening)
     {
         flip = SDL_FLIP_NONE;
-        
+
         if (location.x + deltaSpeed < level->GetWidth() - level->GetBorderWidth() - sprite->GetWidth())
         {
             location.x += static_cast<int>(deltaSpeed);
         }
     }
 
-    for (const Interactable* interactable : actors.iterator)
+    for (Interactable* interactable : actors.iterator)
     {
         if (IsOverlapping(interactable))
         {
             // Render interact key above interactable
-            renderInteractKey = true;
+            renderInteractKey = !listening;
             renderLocation = interactable->GetLocation();
-            renderLocation.x += interactable->GetWidth()/2;
+            renderLocation.x += interactable->GetWidth() / 2;
 
             if (keyStates[SDL_SCANCODE_SPACE] == 1)
             {
@@ -63,8 +64,33 @@ void Player::Tick(float deltaTime)
                 interactable->Interact();
                 canInteract = false;
                 interactTimer.Start();
+
+                Conversation* conversation = dynamic_cast<Conversation*>(interactable);
+                if (conversation != nullptr)
+                {
+                    if (listening)
+                    {
+                        if (conversation->HasNextSentence())
+                        {
+                            printf("%s\n", conversation->GetNextSentence().c_str());
+                            printf("has next: %hhd\n", conversation->HasNextSentence());
+                        }
+                        else
+                        {
+                            printf("Ending conversation.\n");
+                            listening = false;
+                        }
+
+                        return;
+                    }
+
+                    printf("Starting conversation\n\n");
+                    printf("%s\n", conversation->GetSentence().c_str());
+                    printf("has next: %hhd\n", conversation->HasNextSentence());
+                    listening = true;
+                }
             }
-            
+
             return;
         }
 
@@ -89,9 +115,9 @@ void Player::Render(Camera* camera)
     if (renderInteractKey)
     {
         renderLocation = camera == nullptr ? renderLocation : renderLocation - camera->GetLocation();
-        renderLocation.x -= interactKey->GetWidth()/2;
+        renderLocation.x -= interactKey->GetWidth() / 2;
         renderLocation.y -= interactKey->GetHeight();
-        
+
         interactKey->Render(renderLocation);
     }
 }

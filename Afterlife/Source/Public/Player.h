@@ -10,6 +10,7 @@ class Player : public Actor
     Array<Interactable*> actors;
     Timer interactTimer;
     bool canInteract = true;
+    bool listening = false;
     
     Sprite* interactKey;
     bool renderInteractKey = false;

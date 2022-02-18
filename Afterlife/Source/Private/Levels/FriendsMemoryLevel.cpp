@@ -21,8 +21,14 @@ FriendsMemoryLevel::FriendsMemoryLevel()
     
     levelLoader = new FrozenRiverLevelLoader(Vector2(charon->GetWidth(), charon->GetHeight()));
     levelLoader->SetLocation(Vector2(1160, 415));
+    conversation = new Conversation();
+    conversation->SetLocation(Vector2(220, 450));
+    conversation->AddSentence("Sentence #1");
+    conversation->AddSentence("Sentence #2");
+    conversation->AddSentence("Sentence #3");
 
     player->AddInteractable(levelLoader);
+    player->AddInteractable(conversation);
 }
 
 FriendsMemoryLevel::~FriendsMemoryLevel()
@@ -57,6 +63,7 @@ void FriendsMemoryLevel::Render()
     charon->Render(Vector2(1160, 415));
     levelLoader->Render();
     friends->Render(Vector2(220, 450));
+    conversation->Render();
     player->Render();
     electricityPole->Render();
 }
