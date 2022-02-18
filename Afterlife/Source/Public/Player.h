@@ -26,4 +26,5 @@ public:
 
     void AddInteractable(Interactable* interactable);
     bool IsOverlapping(const Interactable* interactable) const;
+    bool IsInConversation() const { return listening; }
 };

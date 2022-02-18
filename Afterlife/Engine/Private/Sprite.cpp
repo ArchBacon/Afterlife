@@ -1,19 +1,30 @@
 #include "Sprite.h"
 
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include "Application.h"
 
-Sprite::Sprite(std::string path)
+Sprite::Sprite(std::string path, bool text)
 {
-    SDL_Surface* image = IMG_Load(path.c_str());
-    if (image == nullptr)
+    SDL_Surface* image;
+
+    if (text)
     {
-    #ifdef AE_DEBUG
-        printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
-    #endif
+        TTF_Font* font = TTF_OpenFont("Assets/Fonts/Roboto.ttf", 24);
+        image = TTF_RenderText_Solid(font, path.c_str(), {0, 0, 0});
     }
-    
+    else
+    {
+        image = IMG_Load(path.c_str());
+        if (image == nullptr)
+        {
+        #ifdef AE_DEBUG
+            printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
+        #endif
+        }
+    }
+
     size = Vector2(image->w, image->h);
     sprite = SDL_CreateTextureFromSurface(Application::Get()->GetRenderer(), image);
 

@@ -34,6 +34,11 @@ void Conversation::AddSentence(std::string sentence)
     sentences.Add(sentence);
 }
 
+void Conversation::Reset()
+{
+    currentSentenceIndex = 0;
+}
+
 bool Conversation::HasNextSentence() const
 {
     return sentences.iterator.size() > currentSentenceIndex + 1;

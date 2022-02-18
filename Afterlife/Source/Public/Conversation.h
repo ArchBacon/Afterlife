@@ -16,6 +16,7 @@ public:
     void Render(Camera* camera = nullptr) override;
     void Interact() const override;
     void AddSentence(std::string sentence);
+    void Reset();
     
     bool HasNextSentence() const;
     bool IsEmpty() const;

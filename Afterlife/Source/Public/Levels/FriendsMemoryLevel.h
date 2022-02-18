@@ -3,6 +3,7 @@
 #include "Conversation.h"
 #include "Level.h"
 #include "Player.h"
+#include "SDL_ttf.h"
 
 class FriendsMemoryLevel : public Level
 {
@@ -13,9 +14,12 @@ class FriendsMemoryLevel : public Level
     Sprite* electricityPole;
     Sprite* charon;
     Sprite* friends;
+    Sprite* speechBubble;
 
     Conversation* conversation;
     Interactable* levelLoader;
+
+    TTF_Font* font;
     
 public:
     FriendsMemoryLevel();
