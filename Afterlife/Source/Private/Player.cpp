@@ -73,22 +73,28 @@ void Player::Tick(float deltaTime)
                         if (conversation->HasNextSentence())
                         {
                             conversation->Next();
+                        #ifdef AE_DEBUG
                             printf("%s\n", conversation->GetSentence().text.c_str());
                             printf("has next: %hhd\n", conversation->HasNextSentence());
+                        #endif
                         }
                         else
                         {
+                        #ifdef AE_DEBUG
                             printf("Ending conversation.\n");
+                        #endif
                             conversation->Reset();
                             listening = false;
                         }
 
                         return;
                     }
-
+                    
+                #ifdef AE_DEBUG
                     printf("Starting conversation\n\n");
                     printf("%s\n", conversation->GetSentence().text.c_str());
                     printf("has next: %hhd\n", conversation->HasNextSentence());
+                #endif
                     listening = true;
                 }
             }
