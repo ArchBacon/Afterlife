@@ -14,7 +14,6 @@ class FriendsMemoryLevel : public Level
     Sprite* electricityPole;
     Sprite* charon;
     Sprite* friends;
-    Sprite* speechBubble;
 
     Conversation* conversation;
     Interactable* levelLoader;

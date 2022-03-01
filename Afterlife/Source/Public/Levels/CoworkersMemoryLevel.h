@@ -1,13 +1,25 @@
 #pragma once
 
+#include <SDL_ttf.h>
+
 #include "Level.h"
 #include "Player.h"
+
+class Conversation;
 
 class CoworkersMemoryLevel : public Level
 {
     Camera* camera;
     Player* player;
+    
     Sprite* background;
+    Sprite* charon;
+    Sprite* coworkers;
+
+    Conversation* conversation;
+    Interactable* levelLoader;
+
+    TTF_Font* font;
     
 public:
     CoworkersMemoryLevel();

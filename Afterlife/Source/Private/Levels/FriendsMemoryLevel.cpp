@@ -19,7 +19,6 @@ FriendsMemoryLevel::FriendsMemoryLevel()
     electricityPole = new Sprite("Assets/Cafe/electricity_pole.png");
     charon = new Sprite("Assets/charon.png");
     friends = new Sprite("Assets/Cafe/friends.png");
-    speechBubble = new Sprite("Assets/speech_bubble.png");
     
     levelLoader = new FrozenRiverLevelLoader(Vector2(charon->GetWidth(), charon->GetHeight()));
     levelLoader->SetLocation(Vector2(1160, 415));
@@ -48,7 +47,6 @@ FriendsMemoryLevel::~FriendsMemoryLevel()
     delete electricityPole;
     delete friends;
     delete charon;
-    delete speechBubble;
 
     delete conversation;
     delete levelLoader;
@@ -79,12 +77,6 @@ void FriendsMemoryLevel::Render()
 
     if (player->IsInConversation())
     {
-        const Vector2 location = conversation->GetSentence().location;
-        
-        speechBubble->Render(location, nullptr, conversation->GetSentence().flip);
-        
-        const Sprite* text = new Sprite(conversation->GetSentence().text, true);
-        text->Render(location + Vector2(20, 10));
-        delete text;
+        conversation->RenderSentence();
     }
 }

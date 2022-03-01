@@ -1,8 +1,22 @@
 #include "Conversation.h"
 
+#include "Sprite.h"
+
 Conversation::Conversation(Vector2 size)
     : Interactable(size)
 {
+    speechBubble = new Sprite("Assets/speech_bubble.png");
+}
+
+void Conversation::RenderSentence() const
+{
+    const Vector2 location = GetSentence().location;
+    speechBubble->Render(location, nullptr, GetSentence().flip);
+        
+    const Sprite* text = new Sprite(GetSentence().text, true);
+    text->Render(location + Vector2(20, 10));
+
+    delete text;
 }
 
 void Conversation::Add(Sentence sentence)

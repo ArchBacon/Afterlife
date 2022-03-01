@@ -11,7 +11,7 @@ Sprite::Sprite(std::string path, bool text)
 
     if (text)
     {
-        TTF_Font* font = TTF_OpenFont("Assets/Fonts/Roboto.ttf", 24);
+        TTF_Font* font = TTF_OpenFont("Assets/Fonts/Roboto.ttf", 20);
         image = TTF_RenderText_Solid_Wrapped(font, path.c_str(), {0, 0, 0}, 260);
     }
     else

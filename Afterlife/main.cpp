@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Timer.h"
+#include "Levels/CoworkersMemoryLevel.h"
 #include "Levels/FriendsMemoryLevel.h"
 
 constexpr int SCREEN_FPS = 60;
@@ -15,7 +16,7 @@ Timer capTimer;
 
 int main(int argc, char** argv)
 {
-    app->LoadLevel(new FriendsMemoryLevel());
+    app->LoadLevel(new CoworkersMemoryLevel());
     capTimer.Start();
 
     while (app->IsRunning())

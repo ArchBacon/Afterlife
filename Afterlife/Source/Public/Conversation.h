@@ -11,12 +11,15 @@ struct Sentence
 
 class Conversation : public Interactable
 {
+    Sprite* speechBubble;
+    
     std::vector<Sentence> sentences;
     int index = 0;
 
 public:
     Conversation(Vector2 size = Vector2(256, 256));
-    
+
+    void RenderSentence() const;
     void Add(Sentence sentence);
     void Reset();
     
