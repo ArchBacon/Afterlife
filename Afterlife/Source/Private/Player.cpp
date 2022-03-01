@@ -72,7 +72,8 @@ void Player::Tick(float deltaTime)
                     {
                         if (conversation->HasNextSentence())
                         {
-                            printf("%s\n", conversation->GetNextSentence().c_str());
+                            conversation->Next();
+                            printf("%s\n", conversation->GetSentence().text.c_str());
                             printf("has next: %hhd\n", conversation->HasNextSentence());
                         }
                         else
@@ -86,7 +87,7 @@ void Player::Tick(float deltaTime)
                     }
 
                     printf("Starting conversation\n\n");
-                    printf("%s\n", conversation->GetSentence().c_str());
+                    printf("%s\n", conversation->GetSentence().text.c_str());
                     printf("has next: %hhd\n", conversation->HasNextSentence());
                     listening = true;
                 }

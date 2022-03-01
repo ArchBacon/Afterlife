@@ -2,24 +2,25 @@
 
 #include "Interactable.h"
 
+struct Sentence
+{
+    std::string text;
+    Vector2 location;
+    SDL_RendererFlip flip;
+};
+
 class Conversation : public Interactable
 {
-    Array<std::string> sentences;
-    int currentSentenceIndex = 0;
-    
+    std::vector<Sentence> sentences;
+    int index = 0;
+
 public:
-    Conversation( Vector2 size = Vector2(256, 256));
-    ~Conversation() override;
+    Conversation(Vector2 size = Vector2(256, 256));
     
-    void Tick(float deltaTime) override;
-    void OnEvent(SDL_Event& event) override;
-    void Render(Camera* camera = nullptr) override;
-    void Interact() const override;
-    void AddSentence(std::string sentence);
+    void Add(Sentence sentence);
     void Reset();
     
     bool HasNextSentence() const;
-    bool IsEmpty() const;
-    std::string GetNextSentence();
-    std::string GetSentence() const;
+    Sentence GetSentence() const;
+    void Next();
 };

@@ -23,12 +23,18 @@ FriendsMemoryLevel::FriendsMemoryLevel()
     
     levelLoader = new FrozenRiverLevelLoader(Vector2(charon->GetWidth(), charon->GetHeight()));
     levelLoader->SetLocation(Vector2(1160, 415));
+    
     conversation = new Conversation();
     conversation->SetLocation(Vector2(220, 450));
-    conversation->AddSentence("Sentence #1");
-    conversation->AddSentence("Sentence #2");
-    conversation->AddSentence("Sentence #3");
-
+    conversation->Add({"Those are your friends.", Vector2(970, 300), SDL_FLIP_NONE});
+    conversation->Add({"They often played with you, you said?", Vector2(970, 300), SDL_FLIP_NONE});
+    conversation->Add({"Hey, have you heard?", Vector2(200, 340), SDL_FLIP_HORIZONTAL});
+    conversation->Add({"They say he died.", Vector2(200, 340), SDL_FLIP_HORIZONTAL});
+    conversation->Add({"For real!?", Vector2(270, 360), SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Messing around with him was fun, though.", Vector2(270, 360), SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Dang it, there goes one toy.", Vector2(190, 340), SDL_FLIP_NONE});
+    conversation->Add({"They played \"with\" you, it seems.", Vector2(970, 300), SDL_FLIP_NONE});
+ 
     player->AddInteractable(levelLoader);
     player->AddInteractable(conversation);
 }
@@ -68,18 +74,17 @@ void FriendsMemoryLevel::Render()
     friends->Render(Vector2(220, 450));
     conversation->Render();
 
+    player->Render();
+    electricityPole->Render();
+
     if (player->IsInConversation())
     {
-        Vector2 location = conversation->GetLocation();
-        location.y -= speechBubble->GetHeight();
+        const Vector2 location = conversation->GetSentence().location;
         
-        speechBubble->Render(location);
+        speechBubble->Render(location, nullptr, conversation->GetSentence().flip);
         
-        Sprite* text = new Sprite(conversation->GetSentence(), true);
+        const Sprite* text = new Sprite(conversation->GetSentence().text, true);
         text->Render(location + Vector2(20, 10));
         delete text;
     }
-    
-    player->Render();
-    electricityPole->Render();
 }

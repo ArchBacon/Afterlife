@@ -5,58 +5,27 @@ Conversation::Conversation(Vector2 size)
 {
 }
 
-Conversation::~Conversation()
+void Conversation::Add(Sentence sentence)
 {
-}
-
-void Conversation::Tick(float deltaTime)
-{
-    Interactable::Tick(deltaTime);
-}
-
-void Conversation::OnEvent(SDL_Event& event)
-{
-    Interactable::OnEvent(event);
-}
-
-void Conversation::Render(Camera* camera)
-{
-    Interactable::Render(camera);
-}
-
-void Conversation::Interact() const
-{
-    Interactable::Interact();
-}
-
-void Conversation::AddSentence(std::string sentence)
-{
-    sentences.Add(sentence);
+    sentences.push_back(sentence);
 }
 
 void Conversation::Reset()
 {
-    currentSentenceIndex = 0;
+    index = 0;
 }
 
 bool Conversation::HasNextSentence() const
 {
-    return sentences.iterator.size() > currentSentenceIndex + 1;
+    return sentences.size() > index + 1;
 }
 
-bool Conversation::IsEmpty() const
+Sentence Conversation::GetSentence() const
 {
-    return sentences.iterator.empty();
+    return sentences[index];
 }
 
-std::string Conversation::GetNextSentence()
+void Conversation::Next()
 {
-    currentSentenceIndex += 1;
-
-    return GetSentence();
-}
-
-std::string Conversation::GetSentence() const
-{
-    return sentences.iterator[currentSentenceIndex];
+    index += 1;
 }
