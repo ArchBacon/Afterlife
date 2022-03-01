@@ -14,7 +14,7 @@ void Conversation::RenderSentence() const
     speechBubble->Render(location, nullptr, GetSentence().flip);
         
     const Sprite* text = new Sprite(GetSentence().text, true);
-    text->Render(location + Vector2(20, 10));
+    text->Render(location + Vector2(10, 10));
 
     delete text;
 }

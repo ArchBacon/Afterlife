@@ -1,11 +1,26 @@
 #pragma once
 
+#include <SDL_ttf.h>
+
 #include "Level.h"
+
+class Interactable;
+class Conversation;
+class Player;
 
 class CatMemoryLevel : public Level
 {
     Camera* camera;
-    Actor* background;
+    Player* player;
+
+    Sprite* background;
+    Sprite* charon;
+    Sprite* cat;
+
+    Conversation* conversation;
+    Interactable* levelLoader;
+
+    TTF_Font* font;
     
 public:
     CatMemoryLevel();

@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Timer.h"
+#include "Levels/CatMemoryLevel.h"
 #include "Levels/CoworkersMemoryLevel.h"
 #include "Levels/FriendsMemoryLevel.h"
 
@@ -16,7 +17,7 @@ Timer capTimer;
 
 int main(int argc, char** argv)
 {
-    app->LoadLevel(new CoworkersMemoryLevel());
+    app->LoadLevel(new CatMemoryLevel());
     capTimer.Start();
 
     while (app->IsRunning())

@@ -8,7 +8,6 @@ FriendsMemoryLevel::FriendsMemoryLevel()
 {
     size = Vector2(1280, 720);
     border = Vector2(0, 0);
-    font = TTF_OpenFont("Assets/Fonts/Roboto.ttf", 24);
     
     camera = new Camera();
     player = new Player("Assets/ghost.png");
