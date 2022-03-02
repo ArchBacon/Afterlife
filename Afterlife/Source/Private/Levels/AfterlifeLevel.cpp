@@ -58,8 +58,6 @@ void AfterlifeLevel::Tick(float deltaTime)
 {
     player->Tick(deltaTime);
     camera->Update();
-
-    printf("Plocx: %d\n", player->GetLocation().x);
 }
 
 void AfterlifeLevel::Render()
