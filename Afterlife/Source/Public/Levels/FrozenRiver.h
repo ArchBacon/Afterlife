@@ -12,6 +12,7 @@ class FrozenRiver : public Level
     Interactable* levelLoaderFriends;
     Interactable* levelLoaderMother;
     Interactable* levelLoaderCat;
+    Interactable* levelLoaderConversation;
 
     Sprite* background;
     Sprite* coworkers;

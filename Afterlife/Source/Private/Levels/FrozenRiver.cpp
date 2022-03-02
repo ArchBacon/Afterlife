@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "LevelLoaders/CatMemoryLevelLoader.h"
 #include "Sprite.h"
+#include "LevelLoaders/ConversationLevelLoader.h"
 #include "LevelLoaders/CoworkersMemoryLevelLoader.h"
 #include "LevelLoaders/FriendsMemoryLevelLoader.h"
 #include "LevelLoaders/MotherMemoryLevelLoader.h"
@@ -29,6 +30,9 @@ FrozenRiver::FrozenRiver()
     levelLoaderCat = new CatMemoryLevelLoader(Vector2(125, 125));
     levelLoaderCat->SetLocation(Vector2(2210 + (125/2), 540));
 
+    levelLoaderConversation = new ConversationLevelLoader(Vector2(170, 125));
+    levelLoaderConversation->SetLocation(Vector2(2690 + (125/2), 540));
+
     // Create sprites
     background = new Sprite("Assets/Memories/background.png");
     coworkers = new Sprite("Assets/Memories/coworkers.png");
@@ -42,6 +46,7 @@ FrozenRiver::FrozenRiver()
     player->AddInteractable(levelLoaderFriends);
     player->AddInteractable(levelLoaderMother);
     player->AddInteractable(levelLoaderCat);
+    player->AddInteractable(levelLoaderConversation);
 }
 
 FrozenRiver::~FrozenRiver()
@@ -54,6 +59,12 @@ FrozenRiver::~FrozenRiver()
     delete mother;
     delete cat;
     delete portal;
+
+    delete levelLoaderCoworker;
+    delete levelLoaderFriends;
+    delete levelLoaderMother;
+    delete levelLoaderCat;
+    delete levelLoaderConversation;
 }
 
 void FrozenRiver::Render()
@@ -68,6 +79,7 @@ void FrozenRiver::Render()
     levelLoaderFriends->Render(camera);
     levelLoaderMother->Render(camera);
     levelLoaderCat->Render(camera);
+    levelLoaderConversation->Render(camera);
 
     coworkers->Render(Vector2(720, 250) - camera->GetLocation());
     portal->Render(Vector2(720, 250) - camera->GetLocation());
