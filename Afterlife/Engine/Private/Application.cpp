@@ -48,6 +48,11 @@ void Application::Render() const
     window->Update();
 }
 
+void Application::Quit()
+{
+    running = false;
+}
+
 Application* Application::Get()
 {
     if (instance == nullptr)

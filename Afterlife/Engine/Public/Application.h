@@ -26,6 +26,7 @@ public:
     void OnEvent(SDL_Event& event);
     void Tick(float deltaTime) const;
     void Render() const;
+    void Quit();
 
     bool IsRunning() const { return running; };
     Window* GetWindow() const { return window; };
