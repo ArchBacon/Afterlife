@@ -2,8 +2,8 @@
 
 #include "Sprite.h"
 
-Conversation::Conversation(Vector2 size)
-    : Interactable(size)
+Conversation::Conversation(Vector2 size, Player* player)
+    : Interactable(size), player(player)
 {
     speechBubble = new Sprite("Assets/speech_bubble.png");
     convoEndFunc = []() -> void {};
@@ -37,7 +37,16 @@ bool Conversation::HasNextSentence() const
 
 Sentence Conversation::GetSentence() const
 {
-    return sentences[index];
+    Sentence sentence = sentences[index];
+    
+    if (player != nullptr && sentence.playerSentence)
+    {
+        sentence.location.x = player->GetLocation().x - 200;
+
+        return sentence;
+    }
+    
+    return sentence;
 }
 
 void Conversation::Next()

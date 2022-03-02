@@ -13,6 +13,8 @@ class AfterlifeLevel : public Level
 
     Conversation* conversation;
     Interactable* levelLoader;
+
+    bool addedSentences = false;
     
 public:
     AfterlifeLevel();
