@@ -83,6 +83,7 @@ void Player::Tick(float deltaTime)
                         #ifdef _DEBUG
                             printf("Ending conversation.\n");
                         #endif
+                            conversation->EndConversation();
                             conversation->Reset();
                             listening = false;
                         }

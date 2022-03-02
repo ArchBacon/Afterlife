@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 #include "Interactable.h"
 
 struct Sentence
@@ -12,6 +14,7 @@ struct Sentence
 class Conversation : public Interactable
 {
     Sprite* speechBubble;
+    std::function<void()> convoEndFunc;
     
     std::vector<Sentence> sentences;
     int index = 0;
@@ -26,4 +29,7 @@ public:
     bool HasNextSentence() const;
     Sentence GetSentence() const;
     void Next();
+
+    void OnConversationEnd(std::function<void()> func);
+    void EndConversation();
 };

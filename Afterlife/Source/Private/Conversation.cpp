@@ -6,6 +6,7 @@ Conversation::Conversation(Vector2 size)
     : Interactable(size)
 {
     speechBubble = new Sprite("Assets/speech_bubble.png");
+    convoEndFunc = []() -> void {};
 }
 
 void Conversation::RenderSentence() const
@@ -42,4 +43,14 @@ Sentence Conversation::GetSentence() const
 void Conversation::Next()
 {
     index += 1;
+}
+
+void Conversation::OnConversationEnd(std::function<void()> func)
+{
+    convoEndFunc = func;
+}
+
+void Conversation::EndConversation()
+{
+    convoEndFunc();
 }

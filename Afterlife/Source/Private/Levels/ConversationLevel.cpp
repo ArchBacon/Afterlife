@@ -4,6 +4,7 @@
 #include "Conversation.h"
 #include "Player.h"
 #include "Sprite.h"
+#include "Levels/IntroLevel.h"
 
 ConversationLevel::ConversationLevel()
 {
@@ -20,6 +21,10 @@ ConversationLevel::ConversationLevel()
 
     conversation = new Conversation();
     conversation->SetLocation(Vector2(512, 420));
+    conversation->OnConversationEnd([]() -> void
+    {
+        Application::Get()->LoadLevel(new IntroLevel());
+    });
     conversation->Add({"Are you really satisfied with merely that wish~?", Vector2(370, 320), SDL_FLIP_NONE});
     conversation->Add({"You may still ask for a proper wish now, you know?", Vector2(370, 320), SDL_FLIP_NONE});
     conversation->Add({"...", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
