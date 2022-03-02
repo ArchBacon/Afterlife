@@ -1,10 +1,10 @@
-#include "Levels/Ending.h"
+#include "Levels/EndingLevel.h"
 
 #include "Conversation.h"
 #include "Sprite.h"
 #include "LevelLoaders/FrozenRiverLevelLoader.h"
 
-Ending::Ending()
+EndingLevel::EndingLevel()
 {
     size = Vector2(1280, 720);
     border = Vector2(0, 0);
@@ -14,26 +14,22 @@ Ending::Ending()
     background = new Sprite("Assets/ending/end.png");
 }
 
-Ending::~Ending()
+EndingLevel::~EndingLevel()
 {
     delete camera;
     delete background;
 }
 
-void Ending::OnEvent(SDL_Event& event)
+void EndingLevel::OnEvent(SDL_Event& event)
 {
-    if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
-    {
-        Application::Get()->Quit();
-    }
 }
 
-void Ending::Tick(float deltaTime)
+void EndingLevel::Tick(float deltaTime)
 {
     camera->Update();
 }
 
-void Ending::Render()
+void EndingLevel::Render()
 {
     background->Render();
 }

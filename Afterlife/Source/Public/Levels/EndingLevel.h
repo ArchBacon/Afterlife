@@ -2,14 +2,14 @@
 
 #include "Level.h"
 
-class Ending : public Level
+class EndingLevel : public Level
 {
     Camera* camera;
     Sprite* background;
     
 public:
-    Ending();
-    ~Ending() override;
+    EndingLevel();
+    ~EndingLevel() override;
     
     void OnEvent(SDL_Event& event) override;
     void Tick(float deltaTime) override;
