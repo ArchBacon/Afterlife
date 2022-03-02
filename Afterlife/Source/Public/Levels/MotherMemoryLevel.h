@@ -2,10 +2,22 @@
 
 #include "Level.h"
 
+class Interactable;
+class Conversation;
+class Player;
+
 class MotherMemoryLevel : public Level
 {
     Camera* camera;
-    Actor* background;
+    Player* player;
+
+    Sprite* background;
+    Sprite* furniture;
+    Sprite* charon;
+    Sprite* mother;
+
+    Conversation* conversation;
+    Interactable* levelLoader;
     
 public:
     MotherMemoryLevel();

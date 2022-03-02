@@ -1,7 +1,5 @@
 #pragma once
 
-#include <SDL_ttf.h>
-
 #include "Level.h"
 
 class Interactable;
@@ -19,8 +17,6 @@ class CatMemoryLevel : public Level
 
     Conversation* conversation;
     Interactable* levelLoader;
-
-    TTF_Font* font;
     
 public:
     CatMemoryLevel();

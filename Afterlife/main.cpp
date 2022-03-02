@@ -3,8 +3,7 @@
 #include "Application.h"
 #include "Timer.h"
 #include "Levels/CatMemoryLevel.h"
-#include "Levels/CoworkersMemoryLevel.h"
-#include "Levels/FriendsMemoryLevel.h"
+#include "Levels/MotherMemoryLevel.h"
 
 constexpr int SCREEN_FPS = 60;
 constexpr int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
@@ -17,7 +16,7 @@ Timer capTimer;
 
 int main(int argc, char** argv)
 {
-    app->LoadLevel(new CatMemoryLevel());
+    app->LoadLevel(new MotherMemoryLevel());
     capTimer.Start();
 
     while (app->IsRunning())
