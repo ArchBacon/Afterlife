@@ -19,7 +19,7 @@ Sprite::Sprite(std::string path, bool text)
         image = IMG_Load(path.c_str());
         if (image == nullptr)
         {
-        #ifdef AE_DEBUG
+        #ifdef _DEBUG
             printf("Unable to load image %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
         #endif
         }

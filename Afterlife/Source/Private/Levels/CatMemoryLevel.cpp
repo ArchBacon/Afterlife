@@ -22,7 +22,7 @@ CatMemoryLevel::CatMemoryLevel()
     levelLoader = new FrozenRiverLevelLoader(Vector2(charon->GetWidth(), charon->GetHeight()));
     levelLoader->SetLocation(Vector2(1160, 415));
     
-    conversation = new Conversation();
+    conversation = new Conversation(Vector2(144, 204));
     conversation->SetLocation(Vector2(220, 450));
     conversation->Add({"That is the stray cat you had taken care of.", Vector2(970, 300), SDL_FLIP_NONE});
     conversation->Add({"Meow~", Vector2(300, 500), SDL_FLIP_HORIZONTAL});

@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "Player.h"
 #include "Sprite.h"
-#include "Levels/FrozenRiver.h"
+#include "Levels/AfterlifeLevel.h"
 
 IntroLevel::IntroLevel()
 {
@@ -24,7 +24,7 @@ void IntroLevel::OnEvent(SDL_Event& event)
 {
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
     {
-        Application::Get()->LoadLevel(new FrozenRiver());
+        Application::Get()->LoadLevel(new AfterlifeLevel());
     }
 }
 

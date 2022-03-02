@@ -73,14 +73,14 @@ void Player::Tick(float deltaTime)
                         if (conversation->HasNextSentence())
                         {
                             conversation->Next();
-                        #ifdef AE_DEBUG
+                        #ifdef _DEBUG
                             printf("%s\n", conversation->GetSentence().text.c_str());
                             printf("has next: %hhd\n", conversation->HasNextSentence());
                         #endif
                         }
                         else
                         {
-                        #ifdef AE_DEBUG
+                        #ifdef _DEBUG
                             printf("Ending conversation.\n");
                         #endif
                             conversation->Reset();
@@ -90,7 +90,7 @@ void Player::Tick(float deltaTime)
                         return;
                     }
                     
-                #ifdef AE_DEBUG
+                #ifdef _DEBUG
                     printf("Starting conversation\n\n");
                     printf("%s\n", conversation->GetSentence().text.c_str());
                     printf("has next: %hhd\n", conversation->HasNextSentence());
@@ -124,7 +124,7 @@ void Player::Render(Camera* camera)
     {
         renderLocation = camera == nullptr ? renderLocation : renderLocation - camera->GetLocation();
         renderLocation.x -= interactKey->GetWidth() / 2;
-        renderLocation.y -= interactKey->GetHeight();
+        renderLocation.y -= (int)(interactKey->GetHeight() * 1.5);
 
         interactKey->Render(renderLocation);
     }

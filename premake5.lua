@@ -57,12 +57,12 @@ project "Afterlife"
         }
     
     filter "configurations:Debug"
-        defines { "AE_DEBUG" }
+        defines { "_DEBUG" }
         runtime "Debug"
         symbols "On"
         
     filter "configurations:Release"
-        defines { "AE_RELEASE" }
+        defines { "_RELEASE" }
         runtime "Release"
         optimize "On"
         

@@ -11,6 +11,7 @@
 FrozenRiver::FrozenRiver()
 {
     // Create objects
+    size = Vector2(3840, 720);
     camera = new Camera();
 
     player = new Player("Assets/Memories/boat.png");
@@ -41,8 +42,6 @@ FrozenRiver::FrozenRiver()
     player->AddInteractable(levelLoaderFriends);
     player->AddInteractable(levelLoaderMother);
     player->AddInteractable(levelLoaderCat);
-
-    size = Vector2(3200, 720);
 }
 
 FrozenRiver::~FrozenRiver()

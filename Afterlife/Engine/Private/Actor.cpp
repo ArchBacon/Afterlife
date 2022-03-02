@@ -40,7 +40,7 @@ void Actor::Render(Camera* camera)
         flip
     );
 
-#ifdef AE_DEBUG
+#ifdef _DEBUG
     SDL_RenderDrawRect(Application::Get()->GetRenderer(), &collider);
 #endif
 }
