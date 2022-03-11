@@ -16,10 +16,12 @@ struct Sentence
 class Conversation : public Interactable
 {
     Sprite* speechBubble;
-    std::function<void()> convoEndFunc;
+    std::function<void()> callback;
     
     std::vector<Sentence> sentences;
     int index = 0;
+
+    bool ended = false;
 
     Player* player;
 
@@ -33,6 +35,7 @@ public:
     bool HasNextSentence() const;
     Sentence GetSentence() const;
     void Next();
+    bool HasEnded() const;
 
     void OnConversationEnd(std::function<void()> func);
     void EndConversation();

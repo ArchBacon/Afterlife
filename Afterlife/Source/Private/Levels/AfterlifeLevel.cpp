@@ -8,16 +8,16 @@ AfterlifeLevel::AfterlifeLevel()
 {
     size = Vector2(1280, 720);
     border = Vector2(0, 0);
-    
+
     camera = new Camera();
     player = new Player("Assets/ghost_150.png");
     player->SetLocation(Vector2(256, 329));
-    
+
     background = new Sprite("Assets/Intro/background.png");
-    
+
     levelLoader = new FrozenRiverLevelLoader(Vector2(125, 340));
     levelLoader->SetLocation(Vector2(1120, 250));
-    
+
     conversation = new Conversation(Vector2(180, 380), player);
     conversation->SetLocation(Vector2(415, 200));
     conversation->Add({"Congratulations!", Vector2(420, 90), SDL_FLIP_HORIZONTAL});
@@ -33,7 +33,7 @@ AfterlifeLevel::AfterlifeLevel()
     conversation->Add({"Then-", Vector2(player->GetLocation().x - 100, 230), SDL_FLIP_NONE, true});
     conversation->Add({"I want to see how everyone's been doing.", Vector2(player->GetLocation().x - 100, 230), SDL_FLIP_NONE, true});
     conversation->Add({"What?", Vector2(420, 90), SDL_FLIP_HORIZONTAL});
- 
+
     player->AddInteractable(levelLoader);
     player->AddInteractable(conversation);
 }
@@ -42,7 +42,7 @@ AfterlifeLevel::~AfterlifeLevel()
 {
     delete camera;
     delete player;
-    
+
     delete background;
 
     delete conversation;
@@ -63,8 +63,12 @@ void AfterlifeLevel::Tick(float deltaTime)
 void AfterlifeLevel::Render()
 {
     background->Render();
-    
-    levelLoader->Render();
+
+    if (conversation->HasEnded())
+    {
+        levelLoader->Render();
+    }
+
     conversation->Render();
 
     player->Render();
