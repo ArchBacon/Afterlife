@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include "Interactable.h"
-#include "Levels/FriendsMemoryLevel.h"
+#include "Levels/FriendsLevel.h"
 
 class FriendsMemoryLevelLoader final : public Interactable
 {
@@ -14,6 +14,6 @@ public:
     {
         Interactable::Interact();
     
-        Application::Get()->LoadLevel(new FriendsMemoryLevel());
+        Application::Get()->LoadLevel(new FriendsLevel());
     }
 };

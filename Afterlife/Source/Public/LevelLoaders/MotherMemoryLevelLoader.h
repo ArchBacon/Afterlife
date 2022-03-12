@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include "Interactable.h"
-#include "Levels/MotherMemoryLevel.h"
+#include "Levels/MotherLevel.h"
 
 class MotherMemoryLevelLoader final : public Interactable
 {
@@ -14,6 +14,6 @@ public:
     {
         Interactable::Interact();
     
-        Application::Get()->LoadLevel(new MotherMemoryLevel());
+        Application::Get()->LoadLevel(new MotherLevel());
     }
 };

@@ -4,22 +4,20 @@
 #include "Level.h"
 #include "Player.h"
 
-class FriendsMemoryLevel : public Level
+class FriendsLevel : public Level
 {
     Camera* camera;
     Player* player;
     
     Sprite* background;
     Sprite* electricityPole;
-    Sprite* charon;
-    Sprite* friends;
 
     Conversation* conversation;
     Interactable* levelLoader;
     
 public:
-    FriendsMemoryLevel();
-    ~FriendsMemoryLevel() override;
+    FriendsLevel();
+    ~FriendsLevel() override;
     
     void OnEvent(SDL_Event& event) override;
     void Tick(float deltaTime) override;

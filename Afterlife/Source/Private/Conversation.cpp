@@ -5,7 +5,7 @@
 Conversation::Conversation(Vector2 size, Player* player)
     : Interactable(size), player(player)
 {
-    speechBubble = new Sprite("Assets/speech_bubble.png");
+    speechBubble = new Sprite("Assets/v2/Common/SpeechBubble.png");
     callback = []() -> void {};
 }
 
@@ -15,7 +15,7 @@ void Conversation::RenderSentence() const
     speechBubble->Render(location, nullptr, GetSentence().flip);
         
     const Sprite* text = new Sprite(GetSentence().text, true);
-    text->Render(location + Vector2(10, 10));
+    text->Render(location + Vector2(20, 10));
 
     delete text;
 }
@@ -41,7 +41,7 @@ Sentence Conversation::GetSentence() const
     
     if (player != nullptr && sentence.playerSentence)
     {
-        sentence.location.x = player->GetLocation().x - 200;
+        sentence.location.x = player->GetLocation().x + 92;
 
         return sentence;
     }

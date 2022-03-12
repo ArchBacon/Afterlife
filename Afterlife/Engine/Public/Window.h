@@ -7,7 +7,7 @@
 struct WindowProperties
 {
     std::string title = "Of a life without regret.";
-    int width = 1280;
+    int width = 989;
     int height = 720;
 };
 

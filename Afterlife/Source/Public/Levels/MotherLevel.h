@@ -2,24 +2,28 @@
 
 #include "Level.h"
 
-class Player;
+class Interactable;
 class Conversation;
+class Player;
 
-class NewStartLevel : public Level
+class MotherLevel : public Level
 {
     Camera* camera;
     Player* player;
 
     Sprite* background;
+    Sprite* furniture;
+
     Conversation* conversation;
+    Interactable* levelLoader;
     
 public:
-    NewStartLevel();
-    ~NewStartLevel() override;
+    MotherLevel();
+    ~MotherLevel() override;
     
-    void Render() override;
     void OnEvent(SDL_Event& event) override;
     void Tick(float deltaTime) override;
+    void Render() override;
     
     Camera* GetCamera() const override { return camera; };
 };
