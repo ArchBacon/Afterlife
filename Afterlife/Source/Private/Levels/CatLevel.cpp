@@ -8,7 +8,6 @@
 CatLevel::CatLevel()
 {
     size = Vector2(1280, 720);
-    border = Vector2(0, 0);
     
     camera = new Camera();
     player = new Player("Assets/ghost.png");

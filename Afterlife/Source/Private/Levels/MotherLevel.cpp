@@ -8,7 +8,6 @@
 MotherLevel::MotherLevel()
 {
     size = Vector2(989, 720);
-    border = Vector2(0, 0);
 
     camera = new Camera();
     player = new Player("Assets/v2/Characters/Player.png");

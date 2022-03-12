@@ -6,6 +6,7 @@ Conversation::Conversation(Vector2 size, Player* player)
     : Interactable(size), player(player)
 {
     speechBubble = new Sprite("Assets/v2/Common/SpeechBubble.png");
+    /** callback is an empty statement by default */
     callback = []() -> void {};
 }
 
@@ -38,7 +39,11 @@ bool Conversation::HasNextSentence() const
 Sentence Conversation::GetSentence() const
 {
     Sentence sentence = sentences[index];
-    
+
+    /**
+     * If the sentence is flagged to be owned by a moving player, then alter
+     * the location where the text should be located based on the player's location
+     */
     if (player != nullptr && sentence.playerSentence)
     {
         sentence.location.x = player->GetLocation().x + 92;

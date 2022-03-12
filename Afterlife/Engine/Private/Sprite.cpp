@@ -9,6 +9,7 @@ Sprite::Sprite(std::string path, bool text)
 {
     SDL_Surface* image;
 
+    /** if flagged as [Text] render as text, otherwise render as image */
     if (text)
     {
         TTF_Font* font = TTF_OpenFont("Assets/Fonts/Roboto.ttf", 20);
@@ -36,6 +37,9 @@ Sprite::~Sprite()
     SDL_DestroyTexture(sprite);
 }
 
+/**
+ * Render image with transform properties
+ */
 void Sprite::Render(Vector2 location, SDL_Rect* clip, SDL_RendererFlip flip) const
 {
     SDL_Rect renderQuad = {location.x, location.y, size.x, size.y};

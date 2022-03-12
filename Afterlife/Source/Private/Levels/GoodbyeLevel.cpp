@@ -8,14 +8,11 @@
 
 GoodbyeLevel::GoodbyeLevel()
 {
-    // Create objects
     size = Vector2(989, 720);
-    border = Vector2(0, 0);
+    
     camera = new Camera();
-
     player = new Player("Assets/v2/Common/transparent.png");
 
-    // Create sprites
     background = new Sprite("Assets/v2/Levels/Goodbye.png");
 
     constexpr Vector2 grimSpeechLoc = Vector2(439, 103);
@@ -42,7 +39,6 @@ GoodbyeLevel::GoodbyeLevel()
 
 GoodbyeLevel::~GoodbyeLevel()
 {
-    // Delete objects
     delete camera;
     delete background;
     delete conversation;

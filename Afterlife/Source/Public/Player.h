@@ -6,7 +6,7 @@
 
 class Player : public Actor
 {
-    float speed = 460.f;
+    float MovementSpeed = 460.f;
     Array<Interactable*> actors;
     Timer interactTimer;
     bool canInteract = true;

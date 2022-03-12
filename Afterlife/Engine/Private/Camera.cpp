@@ -10,7 +10,7 @@ Camera::Camera()
 
 void Camera::Update(Actor* actorToFollow)
 {
-    // Follow actor
+    /** Follow actor */
     if (actorToFollow != nullptr)
     {
         location.x = (actorToFollow->GetLocation().x + actorToFollow->GetSprite()->GetWidth() / 2) - Application::Get()->GetWindow()->GetWidth() / 2;

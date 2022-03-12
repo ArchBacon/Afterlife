@@ -18,6 +18,7 @@ struct Vector2
     }
 };
 
+/** @deprecated use std::vector instead */
 template <class T>
 class Array
 {

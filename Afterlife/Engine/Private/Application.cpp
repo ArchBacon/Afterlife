@@ -53,6 +53,9 @@ void Application::Quit()
     running = false;
 }
 
+/**
+ * Create new application instance if there doesn't exist one yet, otherwise return new instance
+ */
 Application* Application::Get()
 {
     if (instance == nullptr)

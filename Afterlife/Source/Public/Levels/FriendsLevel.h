@@ -10,7 +10,7 @@ class FriendsLevel : public Level
     Player* player;
     
     Sprite* background;
-    Sprite* electricityPole;
+    Sprite* tree;
 
     Conversation* conversation;
     Interactable* levelLoader;

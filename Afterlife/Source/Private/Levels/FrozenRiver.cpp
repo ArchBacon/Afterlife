@@ -11,10 +11,12 @@
 
 FrozenRiver::FrozenRiver()
 {
-    // Create objects
+    /** Configure size of the level */
     size = Vector2(3840, 720);
+    /** Configure how far from the edge of the level the player is allowed to move */
+    border = Vector2(640, 0);
+    
     camera = new Camera();
-
     player = new Player("Assets/Memories/boat.png");
     player->SetLocation(Vector2(640, 550));
 

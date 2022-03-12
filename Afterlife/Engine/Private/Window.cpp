@@ -7,8 +7,8 @@
 Window::Window(WindowProperties properties)
     : properties(properties)
 {
+    /** Initialize SDL2 libraries */
     SDL_Init(SDL_INIT_EVERYTHING);
-    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     IMG_Init(IMG_INIT_PNG);
     TTF_Init();
 

@@ -9,7 +9,9 @@
 class Level
 {
 protected:
+    /** Size of the level */
     Vector2 size = Vector2(100, 100);
+    /** How far from the edge of the level the player is allowed to move */
     Vector2 border = Vector2(640, 0);
     
 public:

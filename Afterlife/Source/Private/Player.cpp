@@ -23,9 +23,13 @@ void Player::Tick(float deltaTime)
     const Level* level = Application::Get()->GetLevel();
 
     // Move player when keys are pressed
-    const float deltaSpeed = speed * deltaTime;
+    const float deltaSpeed = MovementSpeed * deltaTime;
     const Uint8* keyStates = SDL_GetKeyboardState(nullptr);
 
+    /**
+     * Move left if the [A] key is in the [Pressed] state
+     * and the player is not listening to an conversation
+     */
     if (keyStates[SDL_SCANCODE_A] == 1 && !listening)
     {
         flip = SDL_FLIP_HORIZONTAL;
@@ -35,6 +39,10 @@ void Player::Tick(float deltaTime)
             location.x -= static_cast<int>(deltaSpeed);
         }
     }
+    /**
+     * Move right if the [D] key is in the [Pressed] state
+     * and the player is not listening to an conversation
+     */
     if (keyStates[SDL_SCANCODE_D] == 1 && !listening)
     {
         flip = SDL_FLIP_NONE;
@@ -45,17 +53,25 @@ void Player::Tick(float deltaTime)
         }
     }
 
+    /**
+     * Loop over the added objects that the player can interact with
+     */
     for (Interactable* interactable : actors.iterator)
     {
         if (IsOverlapping(interactable))
         {
-            // Render interact key above interactable
+            /** Render interact key above interactable */
             renderInteractKey = !listening;
             renderLocation = interactable->GetLocation();
             renderLocation.x += interactable->GetWidth() / 2;
 
+            /** Check if [Space] in in the [Pressed] state */
             if (keyStates[SDL_SCANCODE_SPACE] == 1)
             {
+                /**
+                 * If the [Interact] key ([Space]) has been pressed again within 400 milliseconds
+                 * or the player is in a state where it is not allowed to interact, negate the input
+                 */
                 if (interactTimer.GetTicks() < 400 || !canInteract)
                 {
                     return;
@@ -65,9 +81,17 @@ void Player::Tick(float deltaTime)
                 canInteract = false;
                 interactTimer.Start();
 
+                /**
+                 * If the [Interactable] is of type [Conversation], Get the next sentence
+                 * or end the conversation if there are no more sentences left
+                 */
                 Conversation* conversation = dynamic_cast<Conversation*>(interactable);
                 if (conversation != nullptr)
                 {
+                    /**
+                     * If the player has already started listening to a conversation,
+                     * get the next sentence, otherwise set the state to [Listening]
+                     */
                     if (listening)
                     {
                         if (conversation->HasNextSentence())
@@ -111,6 +135,11 @@ void Player::OnEvent(SDL_Event& event)
 {
     Actor::OnEvent(event);
 
+
+    /**
+     * Allow the player to interact again after releasing the [Space] key.
+     * This is to prevent looping through the converation by holding the [Interact] key 
+     **/
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
     {
         canInteract = true;
@@ -121,6 +150,7 @@ void Player::Render(Camera* camera)
 {
     Actor::Render(camera);
 
+    /** Render the [Interact] key center top of the interactable hitbox */
     if (renderInteractKey)
     {
         renderLocation = camera == nullptr ? renderLocation : renderLocation - camera->GetLocation();
@@ -136,6 +166,10 @@ void Player::AddInteractable(Interactable* interactable)
     actors.AddUnique(interactable);
 }
 
+/**
+ * Check if the player's hitbox and the hitbox of the interactble are overlapping
+ * @see https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
+ */
 bool Player::IsOverlapping(const Interactable* interactable) const
 {
     const SDL_Rect other = interactable->GetCollider();

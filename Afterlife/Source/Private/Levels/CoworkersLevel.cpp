@@ -1,5 +1,4 @@
 #include "Levels/CoworkersLevel.h"
-
 #include "Conversation.h"
 #include "Sprite.h"
 #include "LevelLoaders/FrozenRiverLevelLoader.h"
@@ -7,7 +6,6 @@
 CoworkersLevel::CoworkersLevel()
 {
     size = Vector2(1280, 720);
-    border = Vector2(0, 0);
     
     camera = new Camera();
     player = new Player("Assets/ghost.png");

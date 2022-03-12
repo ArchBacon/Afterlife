@@ -24,6 +24,7 @@ void Actor::OnEvent(SDL_Event& event)
 
 void Actor::Render(Camera* camera)
 {
+    /** Update location of collision box */
     if (updateCollider)
     {
         collider = {
@@ -45,6 +46,7 @@ void Actor::Render(Camera* camera)
 #endif
 }
 
+/** Flip actor sprite horizontally */
 void Actor::Flip()
 {
     flip = flip == SDL_FLIP_NONE

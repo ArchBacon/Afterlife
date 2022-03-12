@@ -9,7 +9,6 @@
 EndLevel::EndLevel()
 {
     size = Vector2(1280, 720);
-    border = Vector2(0, 0);
     
     camera = new Camera();
     
@@ -24,6 +23,7 @@ EndLevel::~EndLevel()
 
 void EndLevel::OnEvent(SDL_Event& event)
 {
+    /** Exit application is [Escape] key is in the [Pressed] state */
     if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
     {
         Application::Get()->Quit();

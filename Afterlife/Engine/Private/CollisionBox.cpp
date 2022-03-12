@@ -18,6 +18,7 @@ void CollisionBox::Render(Camera* camera)
         return;
     }
 
+    /** render collision box with correction based on camera location */
     const SDL_Rect collisionRect = collider;
     collider.x -= camera->GetLocation().x;
     collider.y -= camera->GetLocation().y;
@@ -25,6 +26,10 @@ void CollisionBox::Render(Camera* camera)
     SDL_RenderDrawRect(Application::Get()->GetRenderer(), &collisionRect);
 }
 
+/**
+ * Check if the player's hitbox and the hitbox of the interactble are overlapping
+ * @see https://lazyfoo.net/tutorials/SDL/27_collision_detection/index.php
+ */
 bool CollisionBox::IsOverlapping(const CollisionBox* other) const
 {
     const SDL_Rect otherCollider = other->ToRect();

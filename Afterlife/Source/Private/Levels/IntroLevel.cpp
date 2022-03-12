@@ -8,7 +8,6 @@
 IntroLevel::IntroLevel()
 {
     size = Vector2(989, 720);
-    border = Vector2(0, 0);
     
     camera = new Camera();
     background = new Sprite("Assets/v2/Levels/Intro.png");
@@ -22,6 +21,7 @@ IntroLevel::~IntroLevel()
 
 void IntroLevel::OnEvent(SDL_Event& event)
 {
+    /** Load level if the [Space] key is in the [Pressed] state */
     if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_SPACE)
     {
         Application::Get()->LoadLevel(new AfterlifeLevel());
