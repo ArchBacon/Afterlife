@@ -7,8 +7,6 @@
 
 IntroLevel::IntroLevel()
 {
-    size = Vector2(989, 720);
-    
     camera = new Camera();
     background = new Sprite("Assets/v2/Levels/Intro.png");
 }

@@ -7,8 +7,6 @@
 
 CatLevel::CatLevel()
 {
-    size = Vector2(1280, 720);
-    
     camera = new Camera();
     player = new Player("Assets/ghost.png");
     player->SetLocation(Vector2(1070, 490));

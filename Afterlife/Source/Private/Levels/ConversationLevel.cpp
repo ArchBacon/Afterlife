@@ -8,8 +8,6 @@
 
 ConversationLevel::ConversationLevel()
 {
-    size = Vector2(1280, 720);
-    
     camera = new Camera();
     player = new Player("Assets/Convo/transparent.png");
 

@@ -8,8 +8,6 @@
 
 GoodbyeLevel::GoodbyeLevel()
 {
-    size = Vector2(989, 720);
-    
     camera = new Camera();
     player = new Player("Assets/v2/Common/transparent.png");
 

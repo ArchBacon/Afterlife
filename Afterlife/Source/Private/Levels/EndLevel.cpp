@@ -8,8 +8,6 @@
 
 EndLevel::EndLevel()
 {
-    size = Vector2(1280, 720);
-    
     camera = new Camera();
     
     background = new Sprite("Assets/v2/Levels/End.png");
