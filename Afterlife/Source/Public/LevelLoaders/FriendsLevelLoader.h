@@ -4,10 +4,10 @@
 #include "Interactable.h"
 #include "Levels/FriendsLevel.h"
 
-class FriendsMemoryLevelLoader final : public Interactable
+class FriendsLevelLoader final : public Interactable
 {
 public:
-    FriendsMemoryLevelLoader(Vector2 size = Vector2(256, 256))
+    FriendsLevelLoader(Vector2 size = Vector2(256, 256))
         : Interactable(size) {}
     
     void Interact() const override

@@ -1,10 +1,10 @@
-#include "Levels/CoworkersMemoryLevel.h"
+#include "Levels/CoworkersLevel.h"
 
 #include "Conversation.h"
 #include "Sprite.h"
 #include "LevelLoaders/FrozenRiverLevelLoader.h"
 
-CoworkersMemoryLevel::CoworkersMemoryLevel()
+CoworkersLevel::CoworkersLevel()
 {
     size = Vector2(1280, 720);
     border = Vector2(0, 0);
@@ -34,7 +34,7 @@ CoworkersMemoryLevel::CoworkersMemoryLevel()
     player->AddInteractable(conversation);
 }
 
-CoworkersMemoryLevel::~CoworkersMemoryLevel()
+CoworkersLevel::~CoworkersLevel()
 {
     delete camera;
     delete player;
@@ -47,18 +47,18 @@ CoworkersMemoryLevel::~CoworkersMemoryLevel()
     delete levelLoader;
 }
 
-void CoworkersMemoryLevel::OnEvent(SDL_Event& event)
+void CoworkersLevel::OnEvent(SDL_Event& event)
 {
     player->OnEvent(event);
 }
 
-void CoworkersMemoryLevel::Tick(float deltaTime)
+void CoworkersLevel::Tick(float deltaTime)
 {
     player->Tick(deltaTime);
     camera->Update();
 }
 
-void CoworkersMemoryLevel::Render()
+void CoworkersLevel::Render()
 {
     background->Render();
     charon->Render(Vector2(1160, 490));

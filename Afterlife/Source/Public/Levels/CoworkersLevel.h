@@ -1,26 +1,25 @@
 #pragma once
 
 #include "Level.h"
+#include "Player.h"
 
-class Interactable;
 class Conversation;
-class Player;
 
-class CatMemoryLevel : public Level
+class CoworkersLevel : public Level
 {
     Camera* camera;
     Player* player;
-
+    
     Sprite* background;
     Sprite* charon;
-    Sprite* cat;
+    Sprite* coworkers;
 
     Conversation* conversation;
     Interactable* levelLoader;
     
 public:
-    CatMemoryLevel();
-    ~CatMemoryLevel() override;
+    CoworkersLevel();
+    ~CoworkersLevel() override;
     
     void OnEvent(SDL_Event& event) override;
     void Tick(float deltaTime) override;

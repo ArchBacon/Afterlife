@@ -2,12 +2,12 @@
 
 #include "Application.h"
 #include "Player.h"
-#include "LevelLoaders/CatMemoryLevelLoader.h"
+#include "LevelLoaders/CatLevelLoader.h"
 #include "Sprite.h"
 #include "LevelLoaders/ConversationLevelLoader.h"
-#include "LevelLoaders/CoworkersMemoryLevelLoader.h"
-#include "LevelLoaders/FriendsMemoryLevelLoader.h"
-#include "LevelLoaders/MotherMemoryLevelLoader.h"
+#include "LevelLoaders/CoworkersLevelLoader.h"
+#include "LevelLoaders/FriendsLevelLoader.h"
+#include "LevelLoaders/MotherLevelLoader.h"
 
 FrozenRiver::FrozenRiver()
 {
@@ -18,16 +18,16 @@ FrozenRiver::FrozenRiver()
     player = new Player("Assets/Memories/boat.png");
     player->SetLocation(Vector2(640, 550));
 
-    levelLoaderCoworker = new CoworkersMemoryLevelLoader(Vector2(125, 125));
+    levelLoaderCoworker = new CoworkersLevelLoader(Vector2(125, 125));
     levelLoaderCoworker->SetLocation(Vector2(720 + (125/2), 540));
 
-    levelLoaderFriends = new FriendsMemoryLevelLoader(Vector2(125, 125));
+    levelLoaderFriends = new FriendsLevelLoader(Vector2(125, 125));
     levelLoaderFriends->SetLocation(Vector2(1250 + (125/2), 540));
 
-    levelLoaderMother = new MotherMemoryLevelLoader(Vector2(125, 125));
+    levelLoaderMother = new MotherLevelLoader(Vector2(125, 125));
     levelLoaderMother->SetLocation(Vector2(1730 + (125/2), 540));
 
-    levelLoaderCat = new CatMemoryLevelLoader(Vector2(125, 125));
+    levelLoaderCat = new CatLevelLoader(Vector2(125, 125));
     levelLoaderCat->SetLocation(Vector2(2210 + (125/2), 540));
 
     levelLoaderConversation = new ConversationLevelLoader(Vector2(170, 125));

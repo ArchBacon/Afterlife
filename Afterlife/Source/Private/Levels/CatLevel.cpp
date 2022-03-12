@@ -1,11 +1,11 @@
-#include "Levels/CatMemoryLevel.h"
+#include "Levels/CatLevel.h"
 
 #include "Conversation.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "LevelLoaders/FrozenRiverLevelLoader.h"
 
-CatMemoryLevel::CatMemoryLevel()
+CatLevel::CatLevel()
 {
     size = Vector2(1280, 720);
     border = Vector2(0, 0);
@@ -36,7 +36,7 @@ CatMemoryLevel::CatMemoryLevel()
     player->AddInteractable(conversation);
 }
 
-CatMemoryLevel::~CatMemoryLevel()
+CatLevel::~CatLevel()
 {
     delete camera;
     delete player;
@@ -49,18 +49,18 @@ CatMemoryLevel::~CatMemoryLevel()
     delete levelLoader;
 }
 
-void CatMemoryLevel::OnEvent(SDL_Event& event)
+void CatLevel::OnEvent(SDL_Event& event)
 {
     player->OnEvent(event);
 }
 
-void CatMemoryLevel::Tick(float deltaTime)
+void CatLevel::Tick(float deltaTime)
 {
     player->Tick(deltaTime);
     camera->Update();
 }
 
-void CatMemoryLevel::Render()
+void CatLevel::Render()
 {
     background->Render();
     charon->Render(Vector2(1160, 415));
