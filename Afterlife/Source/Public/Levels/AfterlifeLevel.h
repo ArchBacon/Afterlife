@@ -10,6 +10,7 @@ class AfterlifeLevel : public Level
     Player* player;
 
     Sprite* background;
+    Sprite* portal;
 
     Conversation* conversation;
     Interactable* levelLoader;

@@ -11,6 +11,7 @@ AfterlifeLevel::AfterlifeLevel()
     player->SetLocation(Vector2(286, 427));
 
     background = new Sprite("Assets/Levels/Afterlife.png");
+    portal = new Sprite("Assets/Levels/Afterlife-overlay.png");
 
     levelLoader = new FrozenRiverLevelLoader("Afterlife", Vector2(186, 302));
     levelLoader->SetLocation(Vector2(803, 377));
@@ -44,6 +45,7 @@ AfterlifeLevel::~AfterlifeLevel()
     delete player;
 
     delete background;
+    delete portal;
 
     delete conversation;
     delete levelLoader;
@@ -66,6 +68,7 @@ void AfterlifeLevel::Render()
 
     if (conversation->HasEnded())
     {
+        portal->Render();
         levelLoader->Render();
     }
 
