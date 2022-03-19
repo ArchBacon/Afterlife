@@ -17,7 +17,7 @@ class FrozenRiver : public Level
     Sprite* background;
     
 public:
-    FrozenRiver();
+    FrozenRiver(std::string fromLevel);
     ~FrozenRiver() override;
     
     void Render() override;

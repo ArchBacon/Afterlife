@@ -14,7 +14,7 @@ CatLevel::CatLevel()
     
     background = new Sprite("Assets/Levels/Cat.png");
 
-    levelLoader = new FrozenRiverLevelLoader(Vector2(50, 208));
+    levelLoader = new FrozenRiverLevelLoader("Cat", Vector2(50, 208));
     levelLoader->SetLocation(Vector2(908, 337));
 
     constexpr Vector2 catSpeechLoc = Vector2(191, 239);

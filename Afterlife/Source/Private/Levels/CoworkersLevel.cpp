@@ -12,7 +12,7 @@ CoworkersLevel::CoworkersLevel()
     
     background = new Sprite("Assets/Levels/Coworkers.png");
 
-    levelLoader = new FrozenRiverLevelLoader(Vector2(199, 415));
+    levelLoader = new FrozenRiverLevelLoader("Coworkers", Vector2(199, 415));
     levelLoader->SetLocation(Vector2(773, 259));
 
     constexpr Vector2 coworkerSpeechLoc = Vector2(152, 194);

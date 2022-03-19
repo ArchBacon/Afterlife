@@ -12,7 +12,7 @@ AfterlifeLevel::AfterlifeLevel()
 
     background = new Sprite("Assets/Levels/Afterlife.png");
 
-    levelLoader = new FrozenRiverLevelLoader(Vector2(186, 302));
+    levelLoader = new FrozenRiverLevelLoader("Afterlife", Vector2(186, 302));
     levelLoader->SetLocation(Vector2(803, 377));
 
     constexpr Vector2 grimSpeechLoc = Vector2(368, 172);

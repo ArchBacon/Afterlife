@@ -14,7 +14,7 @@ FriendsLevel::FriendsLevel()
     background = new Sprite("Assets/Levels/Friends.png");
     tree = new Sprite("Assets/Levels/Friends-overlay.png");
     
-    levelLoader = new FrozenRiverLevelLoader(Vector2(100, 208));
+    levelLoader = new FrozenRiverLevelLoader("Friends", Vector2(100, 208));
     levelLoader->SetLocation(Vector2(33, 354));
 
     constexpr Vector2 friend1SpeechLoc = Vector2(97, 195);

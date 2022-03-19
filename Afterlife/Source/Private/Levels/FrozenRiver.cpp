@@ -9,8 +9,10 @@
 #include "LevelLoaders/FriendsLevelLoader.h"
 #include "LevelLoaders/MotherLevelLoader.h"
 
-FrozenRiver::FrozenRiver()
+FrozenRiver::FrozenRiver(std::string fromLevel)
 {
+    printf("%s\n", fromLevel.c_str());
+    
     /** Configure size of the level */
     size = Vector2(3840, 720);
     /** Configure how far from the edge of the level the player is allowed to move */
@@ -18,7 +20,19 @@ FrozenRiver::FrozenRiver()
     
     camera = new Camera();
     player = new Player("Assets/Characters/Boat.png");
-    player->SetLocation(Vector2(640, 550));
+
+    if (fromLevel == "Coworkers")
+    {
+        player->SetLocation(Vector2(930, 550));
+    } else if (fromLevel == "Friends") {
+        player->SetLocation(Vector2(1410, 550));
+    } else if (fromLevel == "Mother") {
+        player->SetLocation(Vector2(1920, 550));
+    } else if (fromLevel == "Cat") {
+        player->SetLocation(Vector2(2410, 550));
+    } else {
+        player->SetLocation(Vector2(640, 550));
+    }    
 
     levelLoaderCoworker = new CoworkersLevelLoader(Vector2(125, 125));
     levelLoaderCoworker->SetLocation(Vector2(930, 500));

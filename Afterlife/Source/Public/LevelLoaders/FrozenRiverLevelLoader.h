@@ -6,14 +6,19 @@
 
 class FrozenRiverLevelLoader final : public Interactable
 {
+    std::string option;
+    
 public:
-    FrozenRiverLevelLoader(Vector2 size = Vector2(256, 256))
-        : Interactable(size) {}
+    FrozenRiverLevelLoader(std::string fromLevel, Vector2 size = Vector2(256, 256))
+        : Interactable(size)
+    {
+        option = fromLevel;
+    }
     
     void Interact() const override
     {
         Interactable::Interact();
     
-        Application::Get()->LoadLevel(new FrozenRiver());
+        Application::Get()->LoadLevel(new FrozenRiver(option));
     }
 };

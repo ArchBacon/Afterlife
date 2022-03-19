@@ -15,7 +15,7 @@ MotherLevel::MotherLevel()
     background = new Sprite("Assets/Levels/Mother.png");
     furniture = new Sprite("Assets/Levels/Mother-overlay.png");
 
-    levelLoader = new FrozenRiverLevelLoader(Vector2(140, 415));
+    levelLoader = new FrozenRiverLevelLoader("Mother", Vector2(140, 415));
     levelLoader->SetLocation(Vector2(843, 74));
 
     constexpr Vector2 motherSpeechLoc = Vector2(141, 77);
