@@ -17,31 +17,26 @@ FrozenRiver::FrozenRiver()
     border = Vector2(640, 0);
     
     camera = new Camera();
-    player = new Player("Assets/Memories/boat.png");
+    player = new Player("Assets/v2/Characters/Boat.png");
     player->SetLocation(Vector2(640, 550));
 
     levelLoaderCoworker = new CoworkersLevelLoader(Vector2(125, 125));
-    levelLoaderCoworker->SetLocation(Vector2(720 + (125/2), 540));
+    levelLoaderCoworker->SetLocation(Vector2(930, 500));
 
     levelLoaderFriends = new FriendsLevelLoader(Vector2(125, 125));
-    levelLoaderFriends->SetLocation(Vector2(1250 + (125/2), 540));
+    levelLoaderFriends->SetLocation(Vector2(1410, 500));
 
     levelLoaderMother = new MotherLevelLoader(Vector2(125, 125));
-    levelLoaderMother->SetLocation(Vector2(1730 + (125/2), 540));
+    levelLoaderMother->SetLocation(Vector2(1920, 500));
 
     levelLoaderCat = new CatLevelLoader(Vector2(125, 125));
-    levelLoaderCat->SetLocation(Vector2(2210 + (125/2), 540));
+    levelLoaderCat->SetLocation(Vector2(2410, 500));
 
     levelLoaderConversation = new ConversationLevelLoader(Vector2(170, 125));
-    levelLoaderConversation->SetLocation(Vector2(2690 + (125/2), 540));
+    levelLoaderConversation->SetLocation(Vector2(2690 + 210, 500));
 
     // Create sprites
-    background = new Sprite("Assets/Memories/background.png");
-    coworkers = new Sprite("Assets/Memories/coworkers.png");
-    friends = new Sprite("Assets/Memories/friends.png");
-    mother = new Sprite("Assets/Memories/mother.png");
-    cat = new Sprite("Assets/Memories/cat.png");
-    portal = new Sprite("Assets/Memories/portal.png");
+    background = new Sprite("Assets/v2/Levels/FrozenRiver.png");
 
     // Config
     player->AddInteractable(levelLoaderCoworker);
@@ -56,11 +51,6 @@ FrozenRiver::~FrozenRiver()
     // Delete objects
     delete camera;
     delete background;
-    delete coworkers;
-    delete friends;
-    delete mother;
-    delete cat;
-    delete portal;
 
     delete levelLoaderCoworker;
     delete levelLoaderFriends;
@@ -82,18 +72,6 @@ void FrozenRiver::Render()
     levelLoaderMother->Render(camera);
     levelLoaderCat->Render(camera);
     levelLoaderConversation->Render(camera);
-
-    coworkers->Render(Vector2(720, 250) - camera->GetLocation());
-    portal->Render(Vector2(720, 250) - camera->GetLocation());
-
-    friends->Render(Vector2(1250, 250) - camera->GetLocation());
-    portal->Render(Vector2(1250, 250) - camera->GetLocation());
-
-    mother->Render(Vector2(1730, 250) - camera->GetLocation());
-    portal->Render(Vector2(1730, 250) - camera->GetLocation());
-
-    cat->Render(Vector2(2210, 250) - camera->GetLocation());
-    portal->Render(Vector2(2210, 250) - camera->GetLocation());
 }
 
 void FrozenRiver::Tick(float deltaTime)

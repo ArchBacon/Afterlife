@@ -15,11 +15,6 @@ class FrozenRiver : public Level
     Interactable* levelLoaderConversation;
 
     Sprite* background;
-    Sprite* coworkers;
-    Sprite* friends;
-    Sprite* mother;
-    Sprite* cat;
-    Sprite* portal;
     
 public:
     FrozenRiver();
