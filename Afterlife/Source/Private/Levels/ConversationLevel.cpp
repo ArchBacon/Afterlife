@@ -9,9 +9,9 @@
 ConversationLevel::ConversationLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Common/Transparent.png");
+    player = new Player("Assets/Common/Transparent.png");
     
-    background = new Sprite("Assets/v2/Levels/Conversation.png");
+    background = new Sprite("Assets/Levels/Conversation.png");
 
     constexpr Vector2 playerSpeechLoc = Vector2(538, 252);
     constexpr Vector2 grimSpeechLoc = Vector2(248, 204);

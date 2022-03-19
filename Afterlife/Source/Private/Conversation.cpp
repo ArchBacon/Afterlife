@@ -5,7 +5,7 @@
 Conversation::Conversation(Vector2 size, Player* player)
     : Interactable(size), player(player)
 {
-    speechBubble = new Sprite("Assets/v2/Common/SpeechBubble.png");
+    speechBubble = new Sprite("Assets/Common/SpeechBubble.png");
     /** callback is an empty statement by default */
     callback = []() -> void {};
 }

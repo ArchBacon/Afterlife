@@ -8,11 +8,11 @@
 CatLevel::CatLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Player-small.png");
+    player = new Player("Assets/Characters/Player-small.png");
     player->SetLocation(Vector2(831, 408));
     player->Flip();
     
-    background = new Sprite("Assets/v2/Levels/Cat.png");
+    background = new Sprite("Assets/Levels/Cat.png");
 
     levelLoader = new FrozenRiverLevelLoader(Vector2(50, 208));
     levelLoader->SetLocation(Vector2(908, 337));

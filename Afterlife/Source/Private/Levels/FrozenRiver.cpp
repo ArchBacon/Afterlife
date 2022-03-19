@@ -17,7 +17,7 @@ FrozenRiver::FrozenRiver()
     border = Vector2(640, 0);
     
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Boat.png");
+    player = new Player("Assets/Characters/Boat.png");
     player->SetLocation(Vector2(640, 550));
 
     levelLoaderCoworker = new CoworkersLevelLoader(Vector2(125, 125));
@@ -36,7 +36,7 @@ FrozenRiver::FrozenRiver()
     levelLoaderConversation->SetLocation(Vector2(2690 + 210, 500));
 
     // Create sprites
-    background = new Sprite("Assets/v2/Levels/FrozenRiver.png");
+    background = new Sprite("Assets/Levels/FrozenRiver.png");
 
     // Config
     player->AddInteractable(levelLoaderCoworker);

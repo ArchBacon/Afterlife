@@ -1,7 +1,7 @@
 #include "Interactable.h"
 
 Interactable::Interactable(const Vector2 size)
-    : Actor("Assets/transparent.png"), size(size)
+    : Actor("Assets/Common/Transparent.png"), size(size)
 {
     updateCollider = false;
 }

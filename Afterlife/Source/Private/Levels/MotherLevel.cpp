@@ -8,12 +8,12 @@
 MotherLevel::MotherLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Player.png");
+    player = new Player("Assets/Characters/Player.png");
     player->SetLocation(Vector2(730, 201));
     player->Flip();
     
-    background = new Sprite("Assets/v2/Levels/Mother.png");
-    furniture = new Sprite("Assets/v2/Levels/Mother-overlay.png");
+    background = new Sprite("Assets/Levels/Mother.png");
+    furniture = new Sprite("Assets/Levels/Mother-overlay.png");
 
     levelLoader = new FrozenRiverLevelLoader(Vector2(140, 415));
     levelLoader->SetLocation(Vector2(843, 74));

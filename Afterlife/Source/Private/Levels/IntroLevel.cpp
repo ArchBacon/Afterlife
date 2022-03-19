@@ -8,7 +8,7 @@
 IntroLevel::IntroLevel()
 {
     camera = new Camera();
-    background = new Sprite("Assets/v2/Levels/Intro.png");
+    background = new Sprite("Assets/Levels/Intro.png");
 }
 
 IntroLevel::~IntroLevel()

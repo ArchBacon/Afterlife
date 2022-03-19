@@ -9,9 +9,9 @@
 GoodbyeLevel::GoodbyeLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Common/transparent.png");
+    player = new Player("Assets/Common/transparent.png");
 
-    background = new Sprite("Assets/v2/Levels/Goodbye.png");
+    background = new Sprite("Assets/Levels/Goodbye.png");
 
     constexpr Vector2 grimSpeechLoc = Vector2(439, 103);
     constexpr Vector2 playerSpeechLoc = Vector2(385, 53);

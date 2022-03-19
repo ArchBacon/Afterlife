@@ -7,10 +7,10 @@
 AfterlifeLevel::AfterlifeLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Player.png");
+    player = new Player("Assets/Characters/Player.png");
     player->SetLocation(Vector2(286, 427));
 
-    background = new Sprite("Assets/v2/Levels/Afterlife.png");
+    background = new Sprite("Assets/Levels/Afterlife.png");
 
     levelLoader = new FrozenRiverLevelLoader(Vector2(186, 302));
     levelLoader->SetLocation(Vector2(803, 377));

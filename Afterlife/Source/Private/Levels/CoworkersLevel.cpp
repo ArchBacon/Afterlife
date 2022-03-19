@@ -6,11 +6,11 @@
 CoworkersLevel::CoworkersLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Player.png");
+    player = new Player("Assets/Characters/Player.png");
     player->SetLocation(Vector2(609, 364));
     player->Flip();
     
-    background = new Sprite("Assets/v2/Levels/Coworkers.png");
+    background = new Sprite("Assets/Levels/Coworkers.png");
 
     levelLoader = new FrozenRiverLevelLoader(Vector2(199, 415));
     levelLoader->SetLocation(Vector2(773, 259));

@@ -7,12 +7,12 @@
 FriendsLevel::FriendsLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/v2/Characters/Player-small.png");
+    player = new Player("Assets/Characters/Player-small.png");
     player->SetLocation(Vector2(152, 396));
     player->Flip();
     
-    background = new Sprite("Assets/v2/Levels/Friends.png");
-    tree = new Sprite("Assets/v2/Levels/Friends-overlay.png");
+    background = new Sprite("Assets/Levels/Friends.png");
+    tree = new Sprite("Assets/Levels/Friends-overlay.png");
     
     levelLoader = new FrozenRiverLevelLoader(Vector2(100, 208));
     levelLoader->SetLocation(Vector2(33, 354));
