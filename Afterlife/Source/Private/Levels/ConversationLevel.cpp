@@ -9,30 +9,32 @@
 ConversationLevel::ConversationLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/Convo/transparent.png");
+    player = new Player("Assets/v2/Common/Transparent.png");
+    
+    background = new Sprite("Assets/v2/Levels/Conversation.png");
 
-    background = new Sprite("Assets/Convo/background.png");
-    boat = new Sprite("Assets/Convo/boat.png");
-
-    conversation = new Conversation();
-    conversation->SetLocation(Vector2(512, 420));
+    constexpr Vector2 playerSpeechLoc = Vector2(538, 252);
+    constexpr Vector2 grimSpeechLoc = Vector2(248, 204);
+    
+    conversation = new Conversation(Vector2(223, 204));
+    conversation->SetLocation(Vector2(376, 345));
     conversation->OnConversationEnd([]() -> void
     {
         Application::Get()->LoadLevel(new GoodbyeLevel());
     });
-    conversation->Add({"Are you really satisfied with merely that wish~?", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"You may still ask for a proper wish now, you know?", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"...", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"Ah, i know!", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"Let us make those bastards suffer!", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"A curse upon them!", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"Or perhaps you prefer resurrection to take revenge directly-", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"I've always wanted to die.", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"However, i'd hate it if i trouble anyone with my death...", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"But nothing like that happened.", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"I'm glad that i died.", Vector2(630, 380), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"...", Vector2(370, 320), SDL_FLIP_NONE});
-    conversation->Add({"Is that so?", Vector2(370, 320), SDL_FLIP_NONE});
+    conversation->Add({"Are you really satisfied with merely that wish~?", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"You may still ask for a proper wish now, you know?", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"...", playerSpeechLoc});
+    conversation->Add({"Ah, i know!", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Let us make those bastards suffer!", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"A curse upon them!", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Or perhaps you prefer resurrection to take revenge directly-", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"I've always wanted to die.", playerSpeechLoc});
+    conversation->Add({"However, i'd hate it if i trouble anyone with my death...", playerSpeechLoc});
+    conversation->Add({"But nothing like that happened.", playerSpeechLoc});
+    conversation->Add({"I'm glad that i died.", playerSpeechLoc});
+    conversation->Add({"...", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Is that so?", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
 
     player->AddInteractable(conversation);
 }
@@ -41,7 +43,6 @@ ConversationLevel::~ConversationLevel()
 {
     delete camera;
     delete background;
-    delete boat;
     delete conversation;
 }
 
@@ -59,8 +60,6 @@ void ConversationLevel::Tick(float deltaTime)
 void ConversationLevel::Render()
 {
     background->Render();
-    boat->Render();
-
     conversation->Render();
     
     player->Render();

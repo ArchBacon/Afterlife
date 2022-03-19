@@ -11,7 +11,6 @@ class ConversationLevel : public Level
     Player* player;
 
     Sprite* background;
-    Sprite* boat;
 
     Conversation* conversation;
     
