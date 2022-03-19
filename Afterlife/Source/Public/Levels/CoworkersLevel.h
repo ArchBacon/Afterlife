@@ -11,8 +11,6 @@ class CoworkersLevel : public Level
     Player* player;
     
     Sprite* background;
-    Sprite* charon;
-    Sprite* coworkers;
 
     Conversation* conversation;
     Interactable* levelLoader;
