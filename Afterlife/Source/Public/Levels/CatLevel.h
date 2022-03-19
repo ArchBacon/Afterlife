@@ -12,8 +12,6 @@ class CatLevel : public Level
     Player* player;
 
     Sprite* background;
-    Sprite* charon;
-    Sprite* cat;
 
     Conversation* conversation;
     Interactable* levelLoader;

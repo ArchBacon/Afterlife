@@ -8,26 +8,28 @@
 CatLevel::CatLevel()
 {
     camera = new Camera();
-    player = new Player("Assets/ghost.png");
-    player->SetLocation(Vector2(1070, 490));
+    player = new Player("Assets/v2/Characters/Player-small.png");
+    player->SetLocation(Vector2(831, 408));
     player->Flip();
     
-    background = new Sprite("Assets/Street/background.png");
-    charon = new Sprite("Assets/charon.png");
-    cat = new Sprite("Assets/Street/cat.png");
+    background = new Sprite("Assets/v2/Levels/Cat.png");
 
-    levelLoader = new FrozenRiverLevelLoader(Vector2(charon->GetWidth(), charon->GetHeight()));
-    levelLoader->SetLocation(Vector2(1160, 415));
+    levelLoader = new FrozenRiverLevelLoader(Vector2(50, 208));
+    levelLoader->SetLocation(Vector2(908, 337));
+
+    constexpr Vector2 catSpeechLoc = Vector2(191, 239);
+    constexpr Vector2 humanSpeechLoc = Vector2(173, 198);
+    constexpr Vector2 grimSpeechLoc = Vector2(734, 212);
     
-    conversation = new Conversation(Vector2(144, 204));
-    conversation->SetLocation(Vector2(220, 450));
-    conversation->Add({"That is the stray cat you had taken care of.", Vector2(970, 300), SDL_FLIP_NONE});
-    conversation->Add({"Meow~", Vector2(300, 500), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"Oh, what's wrong?", Vector2(200, 340), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"Are you lonely?", Vector2(200, 340), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"Meow~", Vector2(300, 500), SDL_FLIP_HORIZONTAL});
-    conversation->Add({"It's living quite well, it seems.", Vector2(970, 300), SDL_FLIP_NONE});
-    conversation->Add({"Good news, is it not?", Vector2(970, 300), SDL_FLIP_NONE});
+    conversation = new Conversation(Vector2(109, 134));
+    conversation->SetLocation(Vector2(165, 334));
+    conversation->Add({"That is the stray cat you had taken care of.", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Meow~", catSpeechLoc});
+    conversation->Add({"Oh, what's wrong?", humanSpeechLoc});
+    conversation->Add({"Are you lonely?", humanSpeechLoc});
+    conversation->Add({"Meow~", catSpeechLoc});
+    conversation->Add({"It's living quite well, it seems.", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
+    conversation->Add({"Good news, is it not?", grimSpeechLoc, SDL_FLIP_HORIZONTAL});
  
     player->AddInteractable(levelLoader);
     player->AddInteractable(conversation);
@@ -39,8 +41,6 @@ CatLevel::~CatLevel()
     delete player;
     
     delete background;
-    delete cat;
-    delete charon;
 
     delete conversation;
     delete levelLoader;
@@ -60,10 +60,7 @@ void CatLevel::Tick(float deltaTime)
 void CatLevel::Render()
 {
     background->Render();
-    charon->Render(Vector2(1160, 415));
-    
     levelLoader->Render();
-    cat->Render(Vector2(220, 450));
     conversation->Render();
 
     player->Render();
